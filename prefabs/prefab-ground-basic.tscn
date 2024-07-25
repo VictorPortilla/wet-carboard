@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgpj37f6qbdti"]
+
+[ext_resource type="Texture2D" uid="uid://nwb6j75vv5hg" path="res://sprites/ground-sprites-temp/ground.jpg" id="1_hmnyp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4h8v"]
+size = Vector2(2304, 88)
+
+[node name="Prefab-ground-basic" type="StaticBody2D"]
+position = Vector2(0, 648)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 560)
+scale = Vector2(2.56, 0.0977778)
+texture = ExtResource("1_hmnyp")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1152, 604)
+shape = SubResource("RectangleShape2D_p4h8v")
