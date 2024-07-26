@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://vp0bf71jeupp"]
+
+[ext_resource type="Texture2D" uid="uid://nwb6j75vv5hg" path="res://sprites/ground-sprites-temp/ground.jpg" id="1_s8lxn"]
+[ext_resource type="Texture2D" uid="uid://b0plblyxwja0v" path="res://sprites/ground-sprites-temp/ground-spike.png" id="2_vdpvr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lm8u"]
+size = Vector2(3840, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bavdx"]
+size = Vector2(64, 208)
+
+[node name="Prefab-ground-onespike" type="StaticBody2D"]
+position = Vector2(2.08165e-12, 2000)
+
+[node name="GroundSprite" type="Sprite2D" parent="."]
+position = Vector2(-2.08165e-12, 1000)
+scale = Vector2(4.26667, 0.088889)
+texture = ExtResource("1_s8lxn")
+centered = false
+
+[node name="GroundCollision" type="CollisionShape2D" parent="."]
+position = Vector2(1920, 1040)
+shape = SubResource("RectangleShape2D_5lm8u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2016, 896.125)
+scale = Vector2(0.284445, 0.925555)
+texture = ExtResource("2_vdpvr")
+
+[node name="SpikeCollision" type="CollisionShape2D" parent="."]
+position = Vector2(2016, 896)
+shape = SubResource("RectangleShape2D_bavdx")
+debug_color = Color(0.865875, 0.275932, 0.574859, 0.42)
