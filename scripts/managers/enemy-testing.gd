@@ -9,7 +9,7 @@ var spawn_timer:Timer
 @export var spawn_interval: float = 5.0
 @export var max_enemies: int = 5
 
-'''
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -33,10 +33,11 @@ func _on_timer_timeout():
 			var pickIndex = enemy_queue.find(pick,0)
 			
 			if(pickIndex != -1):
-				enemy_queue[pickIndex]._set_start_position()
+				var enemy = enemy_queue[pickIndex]
+				add_child(enemy)
 				enemy_queue.pop_at(pickIndex)
 				print("Spawn")
 				break
 		else :
 			print("No enemies ready :c")
-			break'''
+			break

@@ -10,7 +10,8 @@ script = ExtResource("1_qg81x")
 position = Vector2(960, 552)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("1_bwrbp")]
-position = Vector2(989, 599)
+visible = true
+position = Vector2(3549, 951)
 
 [node name="Timer" type="Timer" parent="."]
 

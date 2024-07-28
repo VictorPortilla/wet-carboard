@@ -43,6 +43,7 @@ animations = [{
 radius = 12.0
 
 [node name="ForestSpirt" type="StaticBody2D"]
+visible = false
 scale = Vector2(3.5, 3.5)
 script = ExtResource("1_2cgev")
 yPositions = [100, 150, 200]
