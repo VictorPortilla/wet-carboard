@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpxgkwn5sab6m"]
+
+[ext_resource type="Script" path="res://scripts/enemies/forest-spirt/forest-spirt.gd" id="1_2cgev"]
+[ext_resource type="Texture2D" uid="uid://bfwkrmqgkr5ig" path="res://sprites/enemies/forest-spirt/test-sprites/ghost-Sheet.png" id="1_n181q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4yir"]
+atlas = ExtResource("1_n181q")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bfan"]
+atlas = ExtResource("1_n181q")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h0jl"]
+atlas = ExtResource("1_n181q")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uixra"]
+atlas = ExtResource("1_n181q")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7pth7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4yir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bfan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h0jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uixra")
+}],
+"loop": true,
+"name": &"Movement",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wdwuy"]
+radius = 12.0
+
+[node name="ForestSpirt" type="StaticBody2D"]
+scale = Vector2(3.5, 3.5)
+script = ExtResource("1_2cgev")
+yPositions = [100, 150, 200]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_7pth7")
+animation = &"Movement"
+autoplay = "Movement"
+frame_progress = 0.376587
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_wdwuy")
