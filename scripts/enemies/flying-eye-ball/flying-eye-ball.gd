@@ -29,7 +29,7 @@ func _process(delta):
 	
 
 func _set_start_position():
-	position.y = yPositions.pick_random()
+	position.y = 550
 	position.x = get_viewport_rect().size.x + 10
 
 

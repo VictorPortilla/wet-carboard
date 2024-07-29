@@ -15,7 +15,7 @@ func _process(delta):
 		queue_free()
 	
 func _set_start_position():
-	position.y = yPositions.pick_random()
+	position.y = 650
 	position.x = get_viewport_rect().size.x + 50
 
 '''func _move(delta):

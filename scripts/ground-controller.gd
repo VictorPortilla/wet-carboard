@@ -15,6 +15,7 @@ var activeGround : Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("Holaaaa")
 	screenSize = Vector2i(1920,1080)
 	_generate_ground_instances()
 	activeGround = groundInstances[0]

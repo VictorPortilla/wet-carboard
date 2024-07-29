@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccwmpycb7ma7b"]
+
+[ext_resource type="Script" path="res://scripts/ground-controller.gd" id="1_305hg"]
+[ext_resource type="PackedScene" uid="uid://b6ya5japrbjdp" path="res://prefabs/flying-eye-ball.tscn" id="2_e3m8l"]
+[ext_resource type="PackedScene" uid="uid://dpxgkwn5sab6m" path="res://prefabs/forest-spirt.tscn" id="3_cp21h"]
+[ext_resource type="PackedScene" path="res://scenes/player_character.tscn" id="4_kdho6"]
+[ext_resource type="Texture2D" uid="uid://u0rb5na8qj3o" path="res://sprites/bingus.png" id="5_ldqo0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4p6s"]
+size = Vector2(85, 116.5)
+
+[node name="Prototype" type="Node2D"]
+script = ExtResource("1_305hg")
+
+[node name="Flying-eye-ball" parent="." instance=ExtResource("2_e3m8l")]
+
+[node name="ForestSpirt" parent="." instance=ExtResource("3_cp21h")]
+
+[node name="Player" parent="." instance=ExtResource("4_kdho6")]
+position = Vector2(55, 925)
+
+[node name="Bingus" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(275, 676)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bingus"]
+position = Vector2(-9.5, 5.75)
+shape = SubResource("RectangleShape2D_l4p6s")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bingus"]
+texture = ExtResource("5_ldqo0")
