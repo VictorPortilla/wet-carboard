@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6ya5japrbjdp"]
+[gd_scene load_steps=7 format=3 uid="uid://b6ya5japrbjdp"]
 
 [ext_resource type="Texture2D" uid="uid://cd0ip0qdlftut" path="res://sprites/enemies/flying-eye-ball/test-sprites/Eye Monster Sprite Sheet.png" id="1_5b7mp"]
+[ext_resource type="Script" path="res://scripts/enemies/flying-eye-ball/flying-eye-ball.gd" id="1_m8sw4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35i2s"]
 atlas = ExtResource("1_5b7mp")
@@ -25,15 +26,20 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ipxbf"]
-radius = 6.0
+radius = 0.12
 
 [node name="Flying-eye-ball" type="StaticBody2D"]
+scale = Vector2(7, 7)
+script = ExtResource("1_m8sw4")
+yPositions = [150, 200, 250]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_gg67y")
-frame_progress = 0.827926
+frame_progress = 0.901471
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(-1, -1)
+scale = Vector2(50, 50)
 shape = SubResource("CircleShape2D_ipxbf")

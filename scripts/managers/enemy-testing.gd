@@ -1,6 +1,6 @@
 extends Node2D
 
-var enemy_scene = preload("res://prefabs/forest-spirt.tscn")
+'''var enemy_scene = preload("res://prefabs/forest-spirt.tscn")
 
 var enemy_queue: Array = []
 
@@ -40,4 +40,4 @@ func _on_timer_timeout():
 				break
 		else :
 			print("No enemies ready :c")
-			break
+			break'''

@@ -13,11 +13,9 @@ func _process(delta):
 	
 	if position.x < -5:
 		queue_free()
-		print("Bye" + self.name)
 	
 func _set_start_position():
 	position.y = yPositions.pick_random()
-	print(position.y)
 	position.x = get_viewport_rect().size.x + 50
 
 '''func _move(delta):
