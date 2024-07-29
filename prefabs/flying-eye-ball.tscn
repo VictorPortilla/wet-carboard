@@ -31,13 +31,14 @@ radius = 0.12
 [node name="Flying-eye-ball" type="StaticBody2D"]
 scale = Vector2(7, 7)
 script = ExtResource("1_m8sw4")
+amplitude = 200.0
 yPositions = [150, 200, 250]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_gg67y")
-frame_progress = 0.901471
+frame_progress = 0.78128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1)
