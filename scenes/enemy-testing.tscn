@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxah0h4413car"]
+[gd_scene load_steps=5 format=3 uid="uid://dxah0h4413car"]
 
 [ext_resource type="PackedScene" uid="uid://dpxgkwn5sab6m" path="res://prefabs/forest-spirt.tscn" id="1_bwrbp"]
 [ext_resource type="Script" path="res://scripts/managers/enemy-testing.gd" id="1_qg81x"]
 [ext_resource type="PackedScene" uid="uid://b6ya5japrbjdp" path="res://prefabs/flying-eye-ball.tscn" id="3_oyauy"]
+[ext_resource type="PackedScene" uid="uid://jfltqvoohhds" path="res://prefabs/banshee.tscn" id="4_71ul2"]
 
 [node name="Enemy-testing" type="Node2D"]
 script = ExtResource("1_qg81x")
@@ -17,5 +18,8 @@ position = Vector2(3549, 951)
 
 [node name="Flying-eye-ball" parent="." instance=ExtResource("3_oyauy")]
 position = Vector2(1379, 592)
+
+[node name="Banshee" parent="." instance=ExtResource("4_71ul2")]
+position = Vector2(1177, 611)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

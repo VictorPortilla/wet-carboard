@@ -70,14 +70,16 @@ radius = 33.0
 height = 128.0
 
 [node name="Banshee" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_77vwd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_t4qhl")
-animation = &"Fly"
+animation = &"Scream"
 autoplay = "Fly"
-frame_progress = 0.871716
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, 3)
