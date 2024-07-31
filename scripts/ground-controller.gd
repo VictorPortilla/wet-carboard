@@ -2,11 +2,13 @@ extends Node2D
 
 var groundBasic = preload("res://prefabs/ground-basic.tscn")
 var groundOneSpike = preload("res://prefabs/ground-onespike.tscn")
+var groundTwoSpikes = preload("res://prefabs/ground-twospikes.tscn")
+var groundPit = preload("res://prefabs/ground-pit.tscn")
 
-var groundTypes = [groundBasic, groundOneSpike]
+var groundTypes = [groundBasic, groundOneSpike, groundTwoSpikes, groundPit]
 var groundInstances : Array
 
-var SPEED = 10.0
+var SPEED = 25.0
 var screenSize : Vector2i
 var lastGroundCalled 
 
@@ -31,8 +33,8 @@ func _physics_process(_delta):
 	pass
 
 func _generate_ground_instances():
-	for i in range (3): 
-		var new_gnd = groundTypes[1]
+	for i in range (4): 
+		var new_gnd = groundTypes[i]
 		var gnd
 		gnd = new_gnd.instantiate()
 		lastGroundCalled = gnd

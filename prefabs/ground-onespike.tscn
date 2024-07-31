@@ -10,7 +10,8 @@ size = Vector2(3840, 80)
 size = Vector2(64, 208)
 
 [node name="Prefab-ground-onespike" type="StaticBody2D"]
-position = Vector2(2.08165e-12, 2000)
+visibility_layer = 4
+position = Vector2(2.08165e-12, 1200)
 
 [node name="GroundSprite" type="Sprite2D" parent="."]
 position = Vector2(-2.08165e-12, 1000)
@@ -22,12 +23,17 @@ centered = false
 position = Vector2(1920, 1040)
 shape = SubResource("RectangleShape2D_5lm8u")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="SpikeSprite" type="Sprite2D" parent="."]
 position = Vector2(2016, 896.125)
 scale = Vector2(0.284445, 0.925555)
 texture = ExtResource("2_vdpvr")
 
-[node name="SpikeCollision" type="CollisionShape2D" parent="."]
-position = Vector2(2016, 896)
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(2016, 896.125)
+scale = Vector2(0.284445, 0.925555)
+
+[node name="SpikeCollision" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.13501)
+scale = Vector2(3.51562, 1.08043)
 shape = SubResource("RectangleShape2D_bavdx")
-debug_color = Color(0.865875, 0.275932, 0.574859, 0.42)
+debug_color = Color(0.541377, 0.536078, 0.514862, 0.42)

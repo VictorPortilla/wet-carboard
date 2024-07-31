@@ -6,7 +6,7 @@
 size = Vector2(3840, 80)
 
 [node name="Prefab-ground-basic" type="StaticBody2D"]
-position = Vector2(2.08165e-12, 2000)
+position = Vector2(2.08165e-12, 1200)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 1000)
