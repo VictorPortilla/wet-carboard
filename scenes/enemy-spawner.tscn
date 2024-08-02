@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://wbh1ar2ktxkv"]
+
+[ext_resource type="Script" path="res://scripts/managers/enemy-spawner.gd" id="1_ljqxe"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ljqxe")
+spawnPositions = [Vector2(1920, 800), Vector2(1920, 500), Vector2(1920, 200)]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="Spawn" type="Node" parent="SpawnPoints"]
+
+[node name="Spawn2" type="Node" parent="SpawnPoints"]
+
+[node name="Spawn3" type="Node" parent="SpawnPoints"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
