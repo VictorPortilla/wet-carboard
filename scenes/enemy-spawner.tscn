@@ -6,8 +6,16 @@
 script = ExtResource("1_ljqxe")
 spawnPositions = [Vector2(1920, 800), Vector2(1920, 500), Vector2(1920, 200)]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="ForestSpiritTimer" type="Timer" parent="."]
 wait_time = 5.0
+autostart = true
+
+[node name="FlyingEyeBallTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="BansheeTimer" type="Timer" parent="."]
+wait_time = 7.0
 autostart = true
 
 [node name="SpawnPoints" type="Node" parent="."]
@@ -18,4 +26,6 @@ autostart = true
 
 [node name="Spawn3" type="Node" parent="SpawnPoints"]
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ForestSpiritTimer" to="." method="_on_forest_spirit_timer_timeout"]
+[connection signal="timeout" from="FlyingEyeBallTimer" to="." method="_on_flying_eye_ball_timer_timeout"]
+[connection signal="timeout" from="BansheeTimer" to="." method="_on_banshee_timer_timeout"]

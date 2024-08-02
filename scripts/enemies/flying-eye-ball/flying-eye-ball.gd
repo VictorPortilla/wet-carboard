@@ -13,7 +13,6 @@ var time_passed: float = 0
 func _ready():
 	direction.x = -1
 	direction.y = 0
-	_set_start_position()
 	start_position = position
 
 
@@ -26,11 +25,9 @@ func _process(delta):
 	if position.x < 0:
 		queue_free()
 	
-	
 
-func _set_start_position():
-	position.y = 550
-	position.x = get_viewport_rect().size.x + 10
-
+func _set_spawn_position(newPos:Vector2):
+	position.y = newPos.y
+	position.x = newPos.x + 50
 
 	

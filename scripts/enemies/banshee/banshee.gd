@@ -5,8 +5,8 @@ var isScreaming : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_set_start_position()
-
+	#_set_start_position()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -23,10 +23,10 @@ func _process(delta):
 	
 	if position.x < 0:
 		queue_free()
-	
-func _set_start_position():
+
+func _set_spawn_position(newPos:Vector2):
 	$AnimatedSprite2D.self_modulate.a = 0
 	$AnimatedSprite2D.play("Fly")
 	isScreaming = false
-	position.x = get_viewport_rect().size.x + 10
-	position.y = 200
+	position.y = newPos.y
+	position.x = newPos.x + 50
