@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://b10ii0hwu5jvj"]
+[gd_scene load_steps=2 format=3 uid="uid://vd12cy4rab1b"]
 
 [ext_resource type="Script" path="res://scripts/ground-controller.gd" id="1_rlw4n"]
 

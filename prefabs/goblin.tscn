@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://dc67f04gjeuwm"]
+
+[ext_resource type="Script" path="res://scripts/enemies/goblin/goblin.gd" id="1_8jp0n"]
+[ext_resource type="Texture2D" uid="uid://bg4sp3wuiw3oi" path="res://sprites/enemies/goblin/test-sprites/gobu walk.png" id="1_oafoo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdg37"]
+size = Vector2(168, 153)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7l0m"]
+atlas = ExtResource("1_oafoo")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vln0"]
+atlas = ExtResource("1_oafoo")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shekb"]
+atlas = ExtResource("1_oafoo")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lexl"]
+atlas = ExtResource("1_oafoo")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi2qm"]
+atlas = ExtResource("1_oafoo")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46iin"]
+atlas = ExtResource("1_oafoo")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jadv4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7l0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vln0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shekb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lexl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi2qm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46iin")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="goblin" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_8jp0n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -76.5)
+shape = SubResource("RectangleShape2D_cdg37")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -108)
+scale = Vector2(8.75, 8.30469)
+sprite_frames = SubResource("SpriteFrames_jadv4")
+autoplay = "default"
+frame_progress = 0.213918
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

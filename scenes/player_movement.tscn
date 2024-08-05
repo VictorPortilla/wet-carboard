@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cl13ojflrmahn"]
 
-[ext_resource type="PackedScene" path="res://scenes/player_character.tscn" id="1_a5chp"]
+[ext_resource type="PackedScene" uid="uid://drmweilwoh8b" path="res://scenes/player_character.tscn" id="1_a5chp"]
 [ext_resource type="Texture2D" uid="uid://u0rb5na8qj3o" path="res://sprites/bingus.png" id="2_xac0l"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0fmxm"]
