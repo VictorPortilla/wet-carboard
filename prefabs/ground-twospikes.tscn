@@ -11,6 +11,8 @@ size = Vector2(64.0001, 208.001)
 
 [node name="StaticBody2D" type="StaticBody2D"]
 position = Vector2(2.08165e-12, 1200)
+collision_layer = 4
+collision_mask = 0
 
 [node name="GroundSprite" type="Sprite2D" parent="."]
 position = Vector2(2.08165e-12, 1000)
