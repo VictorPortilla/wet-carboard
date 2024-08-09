@@ -3,9 +3,9 @@ extends Node2D
 @export var spawnPositions: Array
 
 var availableSpawns: Array
-var enemy1 = preload("res://prefabs/forest-spirt.tscn")
-var enemy2 = preload("res://prefabs/flying-eye-ball.tscn")
-var enemy4 = preload("res://prefabs/banshee.tscn")
+var enemy1 = preload("res://prefabs/enemies/forest-spirt.tscn")
+var enemy2 = preload("res://prefabs/enemies/flying-eye-ball.tscn")
+var enemy4 = preload("res://prefabs/enemies/banshee.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
