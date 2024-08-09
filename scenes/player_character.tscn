@@ -115,7 +115,8 @@ animations = [{
 size = Vector2(200, 124)
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
-collision_mask = 4
+position = Vector2(1, 0)
+collision_mask = 2
 script = ExtResource("1_4n4qd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -128,8 +129,8 @@ position = Vector2(137, -136)
 sprite_frames = SubResource("SpriteFrames_xrcyo")
 animation = &"attack"
 autoplay = "default"
-frame = 7
-frame_progress = 0.723321
+frame = 9
+frame_progress = 1.0
 
 [node name="AttackHitbox" type="Area2D" parent="."]
 collision_mask = 2
