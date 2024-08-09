@@ -1,10 +1,10 @@
 extends Node2D
 
-var groundBasic = preload("res://prefabs/ground-basic.tscn")
-var groundOneSpike = preload("res://prefabs/ground-onespike.tscn")
-var groundTwoSpikes = preload("res://prefabs/ground-twospikes.tscn")
-var groundPit = preload("res://prefabs/ground-pit.tscn")
-var groundPitOneSpike = preload("res://prefabs/ground-pit-onespike.tscn")
+var groundBasic = preload("res://prefabs/terrains/ground-basic.tscn")
+var groundOneSpike = preload("res://prefabs/terrains/ground-onespike.tscn")
+var groundTwoSpikes = preload("res://prefabs/terrains/ground-twospikes.tscn")
+var groundPit = preload("res://prefabs/terrains/ground-pit.tscn")
+var groundPitOneSpike = preload("res://prefabs/terrains/ground-pit-onespike.tscn")
 
 var groundTypes = [groundBasic, groundOneSpike, groundTwoSpikes, groundPit, groundPitOneSpike]
 var groundInstances : Array
