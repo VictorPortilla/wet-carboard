@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccwmpycb7ma7b"]
+[gd_scene load_steps=9 format=3 uid="uid://ccwmpycb7ma7b"]
 
 [ext_resource type="Script" path="res://scripts/ground-controller.gd" id="1_305hg"]
 [ext_resource type="PackedScene" uid="uid://b6ya5japrbjdp" path="res://prefabs/enemies/flying-eye-ball.tscn" id="2_e3m8l"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://drmweilwoh8b" path="res://scenes/player_character.tscn" id="4_kdho6"]
 [ext_resource type="Texture2D" uid="uid://u0rb5na8qj3o" path="res://sprites/bingus.png" id="5_ldqo0"]
 [ext_resource type="PackedScene" uid="uid://dc67f04gjeuwm" path="res://prefabs/enemies/goblin.tscn" id="6_ykqk3"]
+[ext_resource type="PackedScene" uid="uid://cmi7lt1s1otja" path="res://prefabs/enemies/crow.tscn" id="7_5nk75"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4p6s"]
 size = Vector2(85, 116.5)
@@ -14,12 +15,14 @@ size = Vector2(85, 116.5)
 script = ExtResource("1_305hg")
 
 [node name="Player" parent="." instance=ExtResource("4_kdho6")]
-position = Vector2(56, 925)
+position = Vector2(141, 925)
 
 [node name="Flying-eye-ball" parent="." instance=ExtResource("2_e3m8l")]
+visible = false
 position = Vector2(2316, 734)
 
 [node name="ForestSpirt" parent="." instance=ExtResource("3_cp21h")]
+visible = false
 position = Vector2(1796, 399)
 
 [node name="Bingus" type="StaticBody2D" parent="."]
@@ -37,3 +40,6 @@ texture = ExtResource("5_ldqo0")
 [node name="goblin" parent="." instance=ExtResource("6_ykqk3")]
 visible = false
 position = Vector2(1691, 924)
+
+[node name="Crow" parent="." instance=ExtResource("7_5nk75")]
+position = Vector2(1907, 498)
