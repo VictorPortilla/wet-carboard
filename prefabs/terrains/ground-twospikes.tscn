@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo4ot7maqq1rb"]
+
+[ext_resource type="Texture2D" uid="uid://nwb6j75vv5hg" path="res://sprites/ground-sprites-temp/ground.jpg" id="1_hinu5"]
+[ext_resource type="Texture2D" uid="uid://b0plblyxwja0v" path="res://sprites/ground-sprites-temp/ground-spike.png" id="2_piguq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r1kob"]
+size = Vector2(3840, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_il4nq"]
+size = Vector2(64.0001, 208.001)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+position = Vector2(2.08165e-12, 1200)
+collision_layer = 4
+collision_mask = 0
+
+[node name="GroundSprite" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 1000)
+scale = Vector2(4.26667, 0.088889)
+texture = ExtResource("1_hinu5")
+centered = false
+
+[node name="GroundCollider" type="CollisionShape2D" parent="."]
+position = Vector2(1920, 1040)
+shape = SubResource("RectangleShape2D_r1kob")
+
+[node name="SpikeSprite1" type="Sprite2D" parent="."]
+position = Vector2(1760, 896)
+scale = Vector2(0.284445, 0.925555)
+texture = ExtResource("2_piguq")
+
+[node name="SpikeSprite2" type="Sprite2D" parent="."]
+position = Vector2(3424, 896)
+scale = Vector2(0.284445, 0.925555)
+texture = ExtResource("2_piguq")
+
+[node name="Spike1Collision" type="Area2D" parent="."]
+position = Vector2(1760, 896)
+scale = Vector2(0.284445, 0.925555)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike1Collision"]
+position = Vector2(0, -6.10352e-05)
+scale = Vector2(3.51562, 1.08043)
+shape = SubResource("RectangleShape2D_il4nq")
+debug_color = Color(0.552271, 0.532767, 0.507029, 0.42)
+
+[node name="Spike2Collision" type="Area2D" parent="."]
+position = Vector2(3424, 896)
+scale = Vector2(0.284445, 0.925555)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike2Collision"]
+position = Vector2(0, -6.10352e-05)
+scale = Vector2(3.51562, 1.08043)
+shape = SubResource("RectangleShape2D_il4nq")
+debug_color = Color(0.552271, 0.532767, 0.507029, 0.42)

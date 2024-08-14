@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1rru6q6p47g0"]
+
+[ext_resource type="Texture2D" uid="uid://nwb6j75vv5hg" path="res://sprites/ground-sprites-temp/ground.jpg" id="1_j3rxl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6apu"]
+size = Vector2(1920, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urj7t"]
+size = Vector2(1472, 80)
+
+[node name="Ground-pit" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 1000)
+scale = Vector2(2.13333, 0.0888889)
+texture = ExtResource("1_j3rxl")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(2368, 1000)
+scale = Vector2(1.63667, 0.0888889)
+texture = ExtResource("1_j3rxl")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(960, 1040)
+shape = SubResource("RectangleShape2D_t6apu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(3104, 1040)
+shape = SubResource("RectangleShape2D_urj7t")
