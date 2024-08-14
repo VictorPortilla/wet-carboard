@@ -72,6 +72,7 @@ height = 128.0
 [node name="Banshee" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_77vwd")
+yPositions = [Vector2(1920, 213), Vector2(1920, 479), Vector2(1920, 745)]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

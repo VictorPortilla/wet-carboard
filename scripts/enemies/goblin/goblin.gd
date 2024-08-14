@@ -5,6 +5,7 @@ const JUMP_VELOCITY = -1000.0
 var has_jumped: bool = false
 @onready var jump_timer = $JumpTimer
 @onready var ray_cast_2d = $RayCast2D
+@export var yPositions: Array = []
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 1400
@@ -20,7 +21,7 @@ func _physics_process(delta):
 	if !has_jumped and position.x <= 500  and is_on_floor():
 		has_jumped = true
 		jump_timer.start()
-		print("Preparing to jump!")
+		# print("Preparing to jump!")
 		SPEED = 0.0
 		# .play("jump_anticipation") or jump idk
 		# velocity.y = JUMP_VELOCITY
@@ -34,3 +35,7 @@ func _on_jump_timer_timeout():
 	print("Jump!")
 	velocity.y = JUMP_VELOCITY
 	SPEED = 400.0
+
+func _set_spawn_position(newPos:Vector2):
+	position.y = newPos.y
+	position.x = newPos.x + 50
