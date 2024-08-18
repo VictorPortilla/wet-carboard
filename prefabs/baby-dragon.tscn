@@ -7,7 +7,7 @@
 size = Vector2(288, 112)
 
 [node name="Baby-dragon" type="Area2D"]
-position = Vector2(40, 41)
+position = Vector2(-340, 80)
 script = ExtResource("1_253nv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
