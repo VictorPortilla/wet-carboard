@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtdfbxu70xn44"]
 
-[ext_resource type="Script" path="res://prefabs/baby-dragon.gd" id="1_253nv"]
+[ext_resource type="Script" path="res://scripts/enemies/baby_dragon/baby-dragon.gd" id="1_253nv"]
 [ext_resource type="Texture2D" uid="uid://tsydjha7m8ae" path="res://sprites/enemies/baby-dragon-temp/Dark-Red-Square.jpg" id="2_c4y3x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_poe5h"]

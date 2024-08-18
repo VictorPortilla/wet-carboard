@@ -9,6 +9,7 @@ var descent_limit
 
 func _ready():
 	descent_limit = enemy_lanes[randi() % enemy_lanes.size()]
+	print("Selected Element: ", descent_limit)
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -23,12 +24,10 @@ func _process(delta):
 func _phase_one(delta):
 	position.x += velocity * delta
 	if position.x > 1350:
-		
 		current_phase = movement_phase.PHASE_TWO
 	
 	
 func _phase_two(delta):
-	print("Selected Element: ", descent_limit)
 	position.x += -velocity * 2 * delta
 	position.y -= -sqrt(((-100 * (position.x - 1350)) / 3)) * vert_velocity * delta
 	if position.y > descent_limit:
