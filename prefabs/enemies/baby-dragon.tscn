@@ -1,18 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtdfbxu70xn44"]
 
-[ext_resource type="Script" path="res://scripts/enemies/baby_dragon/baby-dragon.gd" id="1_253nv"]
-[ext_resource type="Texture2D" uid="uid://tsydjha7m8ae" path="res://sprites/enemies/baby-dragon-temp/Dark-Red-Square.jpg" id="2_c4y3x"]
+[ext_resource type="Script" path="res://scripts/enemies/baby_dragon/baby-dragon.gd" id="1_7aoa0"]
+[ext_resource type="Texture2D" uid="uid://tsydjha7m8ae" path="res://sprites/enemies/baby-dragon-temp/Dark-Red-Square.jpg" id="2_hihg4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_poe5h"]
 size = Vector2(288, 112)
 
 [node name="Baby-dragon" type="Area2D"]
 position = Vector2(-340, 80)
-script = ExtResource("1_253nv")
+script = ExtResource("1_7aoa0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.576, 0.224)
-texture = ExtResource("2_c4y3x")
+texture = ExtResource("2_hihg4")
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
