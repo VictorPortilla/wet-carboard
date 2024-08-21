@@ -34,3 +34,6 @@ func _on_jump_timer_timeout():
 	print("Jump!")
 	velocity.y = JUMP_VELOCITY
 	SPEED = 400.0
+
+func _kill_enemy():
+	$"Health-system-enemies"._die()

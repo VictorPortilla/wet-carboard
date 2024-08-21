@@ -24,3 +24,6 @@ func _set_spawn_position(newPos:Vector2):
 	isScreaming = false
 	position.y = newPos.y
 	position.x = newPos.x + 50
+
+func _kill_enemy():
+	$"Health-system-enemies"._die()

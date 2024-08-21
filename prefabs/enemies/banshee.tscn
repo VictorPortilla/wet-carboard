@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/enemies/banshee/banshee.gd" id="1_77vwd"]
 [ext_resource type="Texture2D" uid="uid://okfq0wjfnqnd" path="res://sprites/enemies/banshee/test-animations/PC Computer - Ragnarok Online - Banshee.png" id="1_evd1d"]
-[ext_resource type="PackedScene" uid="uid://bc3a3kmynuapt" path="res://prefabs/health-system.tscn" id="3_d7iov"]
+[ext_resource type="PackedScene" uid="uid://c17jw6vmbeita" path="res://prefabs/Health-system-enemies.tscn" id="3_n60bj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ya5b1"]
 atlas = ExtResource("1_evd1d")
@@ -86,4 +86,4 @@ frame_progress = 1.0
 position = Vector2(-6, 3)
 shape = SubResource("CapsuleShape2D_sh7lc")
 
-[node name="Health-sytem" parent="." instance=ExtResource("3_d7iov")]
+[node name="Health-system-enemies" parent="." instance=ExtResource("3_n60bj")]

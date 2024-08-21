@@ -18,16 +18,13 @@ script = ExtResource("1_305hg")
 position = Vector2(141, 925)
 
 [node name="Flying-eye-ball" parent="." instance=ExtResource("2_e3m8l")]
-visible = false
 position = Vector2(2316, 734)
 
 [node name="ForestSpirt" parent="." instance=ExtResource("3_cp21h")]
-visible = false
 position = Vector2(1796, 399)
 
 [node name="Bingus" type="StaticBody2D" parent="."]
-visible = false
-position = Vector2(275, 676)
+position = Vector2(287, 1292)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bingus"]
@@ -38,7 +35,6 @@ shape = SubResource("RectangleShape2D_l4p6s")
 texture = ExtResource("5_ldqo0")
 
 [node name="goblin" parent="." instance=ExtResource("6_ykqk3")]
-visible = false
 position = Vector2(1691, 924)
 
 [node name="Crow" parent="." instance=ExtResource("7_5nk75")]
