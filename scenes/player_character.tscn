@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://drmweilwoh8b"]
+[gd_scene load_steps=21 format=3 uid="uid://drmweilwoh8b"]
 
 [ext_resource type="Script" path="res://scripts/player_character.gd" id="1_4n4qd"]
 [ext_resource type="Texture2D" uid="uid://b47j7n4hjwgac" path="res://sprites/prog_art.png" id="2_kxme3"]
 [ext_resource type="Script" path="res://scripts/player_hitbox.gd" id="3_odluv"]
+[ext_resource type="PackedScene" uid="uid://bc3a3kmynuapt" path="res://prefabs/health-system.tscn" id="4_1y5kj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w5ns3"]
 size = Vector2(43, 260)
@@ -143,6 +144,8 @@ disabled = true
 
 [node name="AttackTimer" type="Timer" parent="AttackHitbox"]
 wait_time = 0.36
+
+[node name="Health-sytem" parent="." instance=ExtResource("4_1y5kj")]
 
 [connection signal="body_entered" from="AttackHitbox" to="AttackHitbox" method="_on_body_entered"]
 [connection signal="timeout" from="AttackHitbox/AttackTimer" to="AttackHitbox" method="_on_attack_timer_timeout"]

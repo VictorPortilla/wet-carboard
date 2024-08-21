@@ -50,4 +50,7 @@ func _physics_process(delta):
 		animated_sprite_2d.play("default")
 
 	move_and_slide()
+	
+func _damagePlayer():
+	$"Health-sytem"._take_damage(20)
 
