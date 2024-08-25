@@ -34,7 +34,7 @@ scale = Vector2(7, 7)
 collision_layer = 2
 script = ExtResource("1_m8sw4")
 amplitude = 200.0
-yPositions = [150, 200, 250]
+yPositions = [Vector2(1920, 612), Vector2(1920, 346)]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

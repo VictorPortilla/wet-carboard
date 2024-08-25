@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/managers/enemy-spawner.gd" id="1_ljqxe"]
 
-[node name="Node2D" type="Node2D"]
+[node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_ljqxe")
-spawnPositions = [Vector2(1920, 800), Vector2(1920, 500), Vector2(1920, 200)]
+spawnPositions = [Vector2(1920, 346), Vector2(1920, 612), Vector2(1920, 878)]
 
 [node name="ForestSpiritTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -14,18 +14,20 @@ autostart = true
 wait_time = 10.0
 autostart = true
 
+[node name="GoblinTimer" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+
 [node name="BansheeTimer" type="Timer" parent="."]
 wait_time = 7.0
 autostart = true
 
-[node name="SpawnPoints" type="Node" parent="."]
-
-[node name="Spawn" type="Node" parent="SpawnPoints"]
-
-[node name="Spawn2" type="Node" parent="SpawnPoints"]
-
-[node name="Spawn3" type="Node" parent="SpawnPoints"]
+[node name="CrowTimer" type="Timer" parent="."]
+wait_time = 16.0
+autostart = true
 
 [connection signal="timeout" from="ForestSpiritTimer" to="." method="_on_forest_spirit_timer_timeout"]
 [connection signal="timeout" from="FlyingEyeBallTimer" to="." method="_on_flying_eye_ball_timer_timeout"]
+[connection signal="timeout" from="GoblinTimer" to="." method="_on_goblin_timer_timeout"]
 [connection signal="timeout" from="BansheeTimer" to="." method="_on_banshee_timer_timeout"]
+[connection signal="timeout" from="CrowTimer" to="." method="_on_crow_timer_timeout"]

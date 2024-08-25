@@ -9,7 +9,6 @@ func _process(delta):
 	
 	if position.x < -5:
 		queue_free()
-	
 
 func _set_spawn_position(newPos:Vector2):
 	position.y = newPos.y

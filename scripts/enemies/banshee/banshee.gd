@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var speed : float = 300
+@export var yPositions: Array = []
 var isScreaming : bool
 
 func _process(delta):
