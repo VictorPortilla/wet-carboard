@@ -9,8 +9,6 @@ func _process(delta):
 	position.x -= speed * delta
 	
 	if position.x < -5:
-		#queue_free()
-		hide()
 		_set_initial_position()
 		set_process(false)
 
@@ -24,6 +22,7 @@ func _set_initial_position():
 	position.x = 3000
 	position.y = 3000
 	isActive = false
+	hide()
 
 func _kill_enemy():
 	$"Health-system-enemies"._die()

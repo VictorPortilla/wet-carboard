@@ -21,6 +21,7 @@ script = ExtResource("1_305hg")
 position = Vector2(141, 925)
 
 [node name="Flying-eye-ball" parent="." instance=ExtResource("2_e3m8l")]
+visible = false
 position = Vector2(2316, 734)
 
 [node name="ForestSpirt" parent="." instance=ExtResource("3_cp21h")]
@@ -41,5 +42,4 @@ texture = ExtResource("5_ldqo0")
 position = Vector2(1691, 924)
 
 [node name="Crow" parent="." instance=ExtResource("7_5nk75")]
-visible = false
 position = Vector2(1907, 498)

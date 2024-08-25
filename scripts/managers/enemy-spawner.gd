@@ -17,18 +17,40 @@ var enemy5 = preload("res://prefabs/enemies/crow.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in maxEnemies:
+		# Initial instance for enemy one
 		var enemy = enemy1.instantiate()
-		var spawnPos : Vector2 = Vector2 (3000,3000)
 		enemy._set_initial_position()
 		enemy.set_process(false)
 		add_child(enemy)
 		enemyOneArray.append(enemy)
-		#enemyTwoArray.append(enemy2.instantiate())
-		#enemyThreeArray.append(enemy3.instantiate())
-		#enemyFourArray.append(enemy4.instantiate())
-		#enemyFiveArray.append(enemy5.instantiate())
-	
-	print(enemyOneArray.size())
+		
+		enemy = enemy2.instantiate()
+		enemy._set_initial_position()
+		enemy.set_process(false)
+		add_child(enemy)
+		enemyTwoArray.append(enemy)
+		
+		# Initial instance for enemy three
+		enemy = enemy3.instantiate()
+		enemy._set_initial_position()
+		enemy.set_process(false)
+		add_child(enemy)
+		enemyThreeArray.append(enemy)
+		
+		# Initial instance for enemy four
+		enemy = enemy4.instantiate()
+		enemy._set_initial_position()
+		enemy.set_process(false)
+		add_child(enemy)
+		enemyFourArray.append(enemy)
+		
+		# Initial instance for enemy five
+		'''enemy = enemy5.instantiate()
+		enemy._set_initial_position()
+		enemy.set_process(false)
+		add_child(enemy)
+		enemyFiveArray.append(enemy)'''
+
 	
 func _spawnEnemy(arrayOfEnemies: Array):
 	'''
@@ -50,22 +72,19 @@ func _spawnEnemy(arrayOfEnemies: Array):
 	
 
 func _on_forest_spirit_timer_timeout():
-	#_spawnEnemy(enemy1)
 	_spawnEnemy(enemyOneArray)
-	pass
+
 
 func _on_flying_eye_ball_timer_timeout():
-	#_spawnEnemy(enemy2)
-	pass
+	_spawnEnemy(enemyTwoArray)
 	
 func _on_goblin_timer_timeout():
-	#_spawnEnemy(enemy3)
-	pass
+	_spawnEnemy(enemyThreeArray)
+	
 
 func _on_banshee_timer_timeout():
-	#_spawnEnemy(enemy4)
-	pass
+	_spawnEnemy(enemyFourArray)
 
 func _on_crow_timer_timeout():
-	#_spawnEnemy(enemy5)
+	#_spawnEnemy(enemyFiveArray)
 	pass
