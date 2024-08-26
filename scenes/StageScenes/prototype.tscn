@@ -25,6 +25,7 @@ visible = false
 position = Vector2(2316, 734)
 
 [node name="ForestSpirt" parent="." instance=ExtResource("3_cp21h")]
+visible = false
 position = Vector2(1796, 399)
 
 [node name="Bingus" type="StaticBody2D" parent="."]
@@ -39,7 +40,9 @@ shape = SubResource("RectangleShape2D_l4p6s")
 texture = ExtResource("5_ldqo0")
 
 [node name="goblin" parent="." instance=ExtResource("6_ykqk3")]
+visible = false
 position = Vector2(1691, 924)
 
 [node name="Crow" parent="." instance=ExtResource("7_5nk75")]
+visible = false
 position = Vector2(1907, 498)

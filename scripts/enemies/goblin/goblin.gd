@@ -47,7 +47,7 @@ func _kill_enemy():
 	$"Health-system-enemies"._die()
 
 func _set_spawn_position(newPos:Vector2):
-	position.y = newPos.y + 10
+	position.y = newPos.y + 10 
 	position.x = newPos.x + 50
 	isActive = true
 	show()
