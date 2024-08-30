@@ -5,8 +5,14 @@ var SPEED = 200.0
 @onready var hurtbox = $HurtboxCollisionShape
 @onready var hitbox = $Hitbox/HitboxShape2D
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D 
+
+@export var yPositions: Array = []
+
+var isActive : bool = false
+
 var stage = 0
 # Called when the node enters the scene tree for the first time.
+
 func _ready():
 	# TODO: play initial sound
 	audio_stream_player_2d.play()   
@@ -47,8 +53,19 @@ func _on_attack_timer_timeout():
 			stage += 1
 		3:
 			# Enemy disappears
-			# TODO: make node disappear instead
 			audio_stream_player_2d.play()
-			hurtbox.disabled = true
-			hitbox.disabled = true
+			_set_initial_position()
+			set_process(false)
 	pass # Replace with function body.
+
+func _set_spawn_position(newPos:Vector2):
+	position.y = newPos.y
+	position.x = newPos.x + 50
+	isActive = true
+	show()
+
+func _set_initial_position():
+	position.x = 3000
+	position.y = 3000
+	isActive = false
+	hide()
