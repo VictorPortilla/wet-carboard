@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://ccwmpycb7ma7b"]
+[gd_scene load_steps=18 format=3 uid="uid://ccwmpycb7ma7b"]
 
 [ext_resource type="Script" path="res://scripts/ground-controller.gd" id="1_305hg"]
 [ext_resource type="PackedScene" uid="uid://b6ya5japrbjdp" path="res://prefabs/enemies/flying-eye-ball.tscn" id="2_e3m8l"]
+[ext_resource type="Script" path="res://scripts/background-scroll.gd" id="2_fuhit"]
 [ext_resource type="PackedScene" uid="uid://wbh1ar2ktxkv" path="res://scenes/enemy-spawner.tscn" id="2_omuud"]
 [ext_resource type="Texture2D" uid="uid://bcxl8yqqmf1w1" path="res://sprites/background/parallax-background-1.png" id="2_ouylb"]
 [ext_resource type="PackedScene" uid="uid://dpxgkwn5sab6m" path="res://prefabs/enemies/forest-spirt.tscn" id="3_cp21h"]
@@ -23,36 +24,6 @@ size = Vector2(1920, 128)
 
 [node name="Prototype" type="Node2D"]
 script = ExtResource("1_305hg")
-
-[node name="Background" type="ParallaxBackground" parent="."]
-
-[node name="Base Background" type="Sprite2D" parent="Background"]
-texture = ExtResource("2_ouylb")
-centered = false
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
-motion_scale = Vector2(0.2, 1)
-motion_mirroring = Vector2(3840, 2.08165e-12)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer"]
-texture = ExtResource("3_o843f")
-centered = false
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="Background"]
-motion_scale = Vector2(0.4, 1)
-motion_mirroring = Vector2(3840, 2.08165e-12)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer2"]
-texture = ExtResource("4_iynvt")
-centered = false
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="Background"]
-motion_scale = Vector2(0.6, 1)
-motion_mirroring = Vector2(3840, 2.08165e-12)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer3"]
-texture = ExtResource("5_f4khq")
-centered = false
 
 [node name="EnemySpawner" parent="." instance=ExtResource("2_omuud")]
 
@@ -94,5 +65,40 @@ position = Vector2(960, 1144)
 shape = SubResource("RectangleShape2D_phs2b")
 
 [node name="PlayerCamera" parent="." instance=ExtResource("9_54e7v")]
+visible = false
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("2_fuhit")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Node2D"]
+scroll_ignore_camera_zoom = true
+
+[node name="Base Background" type="Sprite2D" parent="Node2D/ParallaxBackground"]
+texture = ExtResource("2_ouylb")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(3840, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("3_o843f")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(3840, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("4_iynvt")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(3840, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("5_f4khq")
+centered = false
 
 [connection signal="body_entered" from="Killbox" to="Killbox" method="_on_Killbox_body_entered"]
