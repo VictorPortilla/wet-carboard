@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccwmpycb7ma7b"]
+[gd_scene load_steps=12 format=3 uid="uid://ccwmpycb7ma7b"]
 
 [ext_resource type="Script" path="res://scripts/ground-controller.gd" id="1_305hg"]
 [ext_resource type="PackedScene" uid="uid://b6ya5japrbjdp" path="res://prefabs/enemies/flying-eye-ball.tscn" id="2_e3m8l"]
@@ -7,9 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://u0rb5na8qj3o" path="res://sprites/bingus.png" id="5_ldqo0"]
 [ext_resource type="PackedScene" uid="uid://dc67f04gjeuwm" path="res://prefabs/enemies/goblin.tscn" id="6_ykqk3"]
 [ext_resource type="PackedScene" uid="uid://cmi7lt1s1otja" path="res://prefabs/enemies/crow.tscn" id="7_5nk75"]
+[ext_resource type="PackedScene" uid="uid://du735ucw8nxuu" path="res://prefabs/screen-shake-camera.tscn" id="8_a3d66"]
+[ext_resource type="Script" path="res://scripts/killbox-behavior.gd" id="9_4ggm1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4p6s"]
 size = Vector2(85, 116.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phs2b"]
+size = Vector2(1920, 128)
 
 [node name="Prototype" type="Node2D"]
 script = ExtResource("1_305hg")
@@ -39,3 +44,14 @@ position = Vector2(1691, 924)
 
 [node name="Crow" parent="." instance=ExtResource("7_5nk75")]
 position = Vector2(1907, 498)
+
+[node name="Camera2D" parent="." instance=ExtResource("8_a3d66")]
+
+[node name="Killbox" type="Area2D" parent="."]
+script = ExtResource("9_4ggm1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killbox"]
+position = Vector2(960, 1144)
+shape = SubResource("RectangleShape2D_phs2b")
+
+[connection signal="body_entered" from="Killbox" to="Killbox" method="_on_Killbox_body_entered"]

@@ -26,12 +26,12 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
-			velocity.y = JUMP_VELOCITY
+			_jump(1.0)
 		elif has_double_jump:
-			velocity.y = JUMP_VELOCITY
+			_jump(1.0)
 			has_double_jump = false
 		elif ABILITY_TRIPLE_JUMP and has_triple_jump:
-			velocity.y = JUMP_VELOCITY * 0.7  
+			_jump(0.7) 
 			has_triple_jump = false
 
 	# Get the input direction and handle the movement/deceleration.
@@ -53,4 +53,8 @@ func _physics_process(delta):
 	
 func _damagePlayer():
 	$"Health-sytem"._take_damage(20)
+	
+func _jump(multiplier : float):
+	velocity.y = JUMP_VELOCITY * multiplier
+	
 

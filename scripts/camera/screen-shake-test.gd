@@ -7,4 +7,4 @@ func _ready():
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("jump"):
-		TestCamera._shake(0.2, 3)
+		TestCamera._shake(1.0, 10)
