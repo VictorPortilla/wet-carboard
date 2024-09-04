@@ -7,12 +7,17 @@ const JUMP_VELOCITY = -2600.0
 @onready var attack_hitbox_shape = $AttackHitbox/AttackHitboxShape
 @onready var attack_timer = $AttackHitbox/AttackTimer
 
+@onready var PlayerCamera = get_parent().get_node("PlayerCamera")
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 12000
 var has_double_jump = false
 var has_triple_jump = false
 
 var ABILITY_TRIPLE_JUMP = true
+
+func _ready():
+	$"Health-sytem"._fully_heal()
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -26,12 +31,12 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
-			velocity.y = JUMP_VELOCITY
+			_jump(1.0)
 		elif has_double_jump:
-			velocity.y = JUMP_VELOCITY
+			_jump(1.0)
 			has_double_jump = false
 		elif ABILITY_TRIPLE_JUMP and has_triple_jump:
-			velocity.y = JUMP_VELOCITY * 0.7  
+			_jump(0.7) 
 			has_triple_jump = false
 
 	# Get the input direction and handle the movement/deceleration.
@@ -53,4 +58,9 @@ func _physics_process(delta):
 	
 func _damagePlayer():
 	$"Health-sytem"._take_damage(20)
+	PlayerCamera._shake(0.2, 5)
+	
+func _jump(multiplier : float):
+	velocity.y = JUMP_VELOCITY * multiplier
+	
 
