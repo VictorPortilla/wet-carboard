@@ -45,6 +45,7 @@ func _on_jump_timer_timeout():
 
 func _kill_enemy():
 	$"Health-system-enemies"._die()
+	_set_initial_position()
 
 func _set_spawn_position(newPos:Vector2):
 	position.y = newPos.y + 10 

@@ -38,5 +38,6 @@ func _set_initial_position():
 
 func _kill_enemy():
 	$"Health-system-enemies"._die()
+	_set_initial_position()
 
 	

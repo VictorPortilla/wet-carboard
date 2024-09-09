@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2yrs814dpxd5"]
+
+[ext_resource type="Script" path="res://scripts/combo-progession.gd" id="1_51a33"]
+
+[node name="Combo-progession" type="Node"]
+script = ExtResource("1_51a33")
