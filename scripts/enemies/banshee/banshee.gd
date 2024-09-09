@@ -32,6 +32,7 @@ func _set_spawn_position(newPos:Vector2):
 
 func _kill_enemy():
 	$"Health-system-enemies"._die()
+	_set_initial_position()
 
 func _set_initial_position():
 	position.x = 3000

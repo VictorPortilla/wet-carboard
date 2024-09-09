@@ -7,4 +7,4 @@ func _revive():
 
 func _die():
 	isAlive = false
-	get_parent().queue_free()
+	#get_parent().queue_free()

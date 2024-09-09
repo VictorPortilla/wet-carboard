@@ -4,6 +4,7 @@ extends Area2D
 
 func _on_body_entered(body):
 	body._kill_enemy()
+	$"../Combo-progession"._add_to_combo()
 
 
 func _on_attack_timer_timeout():
