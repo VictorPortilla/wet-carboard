@@ -19,8 +19,6 @@ var gravity = 12000
 var has_double_jump = false
 var has_triple_jump = false
 
-var ABILITY_TRIPLE_JUMP = true
-
 func _ready():
 	$"Health-sytem"._fully_heal()
 
@@ -40,7 +38,7 @@ func _physics_process(delta):
 		elif has_double_jump:
 			_jump(1.0)
 			has_double_jump = false
-		elif ABILITY_TRIPLE_JUMP and has_triple_jump:
+		elif combo_progression.abilityOneIsUnlocked and has_triple_jump:
 			_jump(0.7) 
 			has_triple_jump = false
 
@@ -57,7 +55,7 @@ func _physics_process(delta):
 		attack_hitbox_shape.disabled = false
 		animated_sprite_2d.play("attack")
 
-	elif Input.is_action_just_pressed("ability4") and not is_on_floor() and combo_progression.abilityOneIsUnlocked:
+	elif Input.is_action_just_pressed("ability4") and not is_on_floor() and combo_progression.abilityTwoIsUnlocked:
 		ability4_timer.start()
 		ability4_hitbox_shape.disabled = false
 		animated_sprite_2d.play("ability4")
