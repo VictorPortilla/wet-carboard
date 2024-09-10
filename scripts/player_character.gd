@@ -4,23 +4,15 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -2600.0
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var attack_hitbox_shape = $BasicAttackHitbox/BasicAttackHitboxShape
-@onready var attack_timer = $BasicAttackHitbox/BasicAttackTimer
-
-@onready var ability4_hitbox_shape = $Ability4Hitbox/Ability4HitboxShape
-@onready var ability4_timer = $Ability4Hitbox/Ability4Timer
-
-@onready var combo_progression = $"Combo-progession"
-
-@onready var PlayerCamera = get_parent().get_node("PlayerCamera")
+@onready var attack_hitbox_shape = $AttackHitbox/AttackHitboxShape
+@onready var attack_timer = $AttackHitbox/AttackTimer
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 12000
 var has_double_jump = false
 var has_triple_jump = false
 
-func _ready():
-	$"Health-sytem"._fully_heal()
+var ABILITY_TRIPLE_JUMP = true
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -34,12 +26,12 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
-			_jump(1.0)
+			velocity.y = JUMP_VELOCITY
 		elif has_double_jump:
-			_jump(1.0)
+			velocity.y = JUMP_VELOCITY
 			has_double_jump = false
-		elif combo_progression.abilityOneIsUnlocked and has_triple_jump:
-			_jump(0.7) 
+		elif ABILITY_TRIPLE_JUMP and has_triple_jump:
+			velocity.y = JUMP_VELOCITY * 0.7  
 			has_triple_jump = false
 
 	# Get the input direction and handle the movement/deceleration.
@@ -54,23 +46,8 @@ func _physics_process(delta):
 		attack_timer.start()
 		attack_hitbox_shape.disabled = false
 		animated_sprite_2d.play("attack")
-
-	elif Input.is_action_just_pressed("ability4") and not is_on_floor() and combo_progression.abilityTwoIsUnlocked:
-		ability4_timer.start()
-		ability4_hitbox_shape.disabled = false
-		animated_sprite_2d.play("ability4")
-
 	elif !animated_sprite_2d.is_playing():
 		animated_sprite_2d.play("default")
 
 	move_and_slide()
-	
-func _damagePlayer():
-	$"Health-sytem"._take_damage(20)
-	combo_progression._reset_combo()
-	PlayerCamera._shake(0.2, 5)
-	
-func _jump(multiplier : float):
-	velocity.y = JUMP_VELOCITY * multiplier
-	
 
