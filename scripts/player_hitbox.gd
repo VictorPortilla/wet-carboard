@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var attack_hitbox_shape = $AttackHitboxShape
+@export var attack_hitbox_shape: CollisionShape2D
 
 func _on_body_entered(body):
 	body._kill_enemy()

@@ -4,8 +4,13 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -2600.0
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var attack_hitbox_shape = $AttackHitbox/AttackHitboxShape
-@onready var attack_timer = $AttackHitbox/AttackTimer
+@onready var attack_hitbox_shape = $BasicAttackHitbox/BasicAttackHitboxShape
+@onready var attack_timer = $BasicAttackHitbox/BasicAttackTimer
+
+@onready var ability4_hitbox_shape = $Ability4Hitbox/Ability4HitboxShape
+@onready var ability4_timer = $Ability4Hitbox/Ability4Timer
+
+@onready var combo_progression = $"Combo-progession"
 
 @onready var PlayerCamera = get_parent().get_node("PlayerCamera")
 
@@ -51,6 +56,12 @@ func _physics_process(delta):
 		attack_timer.start()
 		attack_hitbox_shape.disabled = false
 		animated_sprite_2d.play("attack")
+
+	elif Input.is_action_just_pressed("ability4") and not is_on_floor() and combo_progression.abilityOneIsUnlocked:
+		ability4_timer.start()
+		ability4_hitbox_shape.disabled = false
+		animated_sprite_2d.play("ability4")
+
 	elif !animated_sprite_2d.is_playing():
 		animated_sprite_2d.play("default")
 
