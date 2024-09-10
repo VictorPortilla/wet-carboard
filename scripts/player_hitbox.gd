@@ -1,9 +1,10 @@
 extends Area2D
 
-@onready var attack_hitbox_shape = $AttackHitboxShape
+@export var attack_hitbox_shape: CollisionShape2D
 
 func _on_body_entered(body):
-	print("Enemy hit!")
+	body._kill_enemy()
+	$"../Combo-progession"._add_to_combo()
 
 
 func _on_attack_timer_timeout():

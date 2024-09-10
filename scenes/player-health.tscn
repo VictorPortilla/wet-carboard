@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://0hwnfkkh67gp"]
+
+[ext_resource type="Texture2D" uid="uid://bkjk86q8fnvym" path="res://sprites/UI/health/temp-heart.png" id="1_jclvl"]
+[ext_resource type="Script" path="res://scripts/managers/player-health-visual.gd" id="1_ki6xn"]
+
+[node name="Player-health" type="CanvasLayer" node_paths=PackedStringArray("hearths")]
+script = ExtResource("1_ki6xn")
+hearths = [NodePath("Hearth"), NodePath("Hearth2"), NodePath("Hearth3")]
+
+[node name="Hearth" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_jclvl")
+expand_mode = 2
+
+[node name="Hearth2" type="TextureRect" parent="."]
+offset_left = 45.0
+offset_right = 85.0
+offset_bottom = 40.0
+texture = ExtResource("1_jclvl")
+expand_mode = 2
+
+[node name="Hearth3" type="TextureRect" parent="."]
+offset_left = 90.0
+offset_right = 130.0
+offset_bottom = 40.0
+texture = ExtResource("1_jclvl")
+expand_mode = 2

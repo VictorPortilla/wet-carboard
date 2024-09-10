@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6ya5japrbjdp"]
+[gd_scene load_steps=8 format=3 uid="uid://b6ya5japrbjdp"]
 
 [ext_resource type="Texture2D" uid="uid://cd0ip0qdlftut" path="res://sprites/enemies/flying-eye-ball/test-sprites/Eye Monster Sprite Sheet.png" id="1_5b7mp"]
 [ext_resource type="Script" path="res://scripts/enemies/flying-eye-ball/flying-eye-ball.gd" id="1_m8sw4"]
+[ext_resource type="PackedScene" uid="uid://c17jw6vmbeita" path="res://prefabs/Health-system-enemies.tscn" id="3_d7oxo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35i2s"]
 atlas = ExtResource("1_5b7mp")
@@ -33,7 +34,7 @@ scale = Vector2(7, 7)
 collision_layer = 2
 script = ExtResource("1_m8sw4")
 amplitude = 200.0
-yPositions = [150, 200, 250]
+yPositions = [Vector2(1920, 612), Vector2(1920, 346)]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -45,3 +46,5 @@ frame_progress = 0.78128
 position = Vector2(-1, -1)
 scale = Vector2(50, 50)
 shape = SubResource("CircleShape2D_ipxbf")
+
+[node name="Health-system-enemies" parent="." instance=ExtResource("3_d7oxo")]

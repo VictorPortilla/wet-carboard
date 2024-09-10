@@ -1,30 +1,46 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccwmpycb7ma7b"]
+[gd_scene load_steps=20 format=3 uid="uid://ccwmpycb7ma7b"]
 
 [ext_resource type="Script" path="res://scripts/ground-controller.gd" id="1_305hg"]
 [ext_resource type="PackedScene" uid="uid://b6ya5japrbjdp" path="res://prefabs/enemies/flying-eye-ball.tscn" id="2_e3m8l"]
+[ext_resource type="Script" path="res://scripts/background-scroll.gd" id="2_fuhit"]
+[ext_resource type="PackedScene" uid="uid://wbh1ar2ktxkv" path="res://scenes/enemy-spawner.tscn" id="2_omuud"]
+[ext_resource type="Texture2D" uid="uid://bcxl8yqqmf1w1" path="res://sprites/background/parallax-background-1.png" id="2_ouylb"]
 [ext_resource type="PackedScene" uid="uid://dpxgkwn5sab6m" path="res://prefabs/enemies/forest-spirt.tscn" id="3_cp21h"]
+[ext_resource type="Texture2D" uid="uid://c88wlmr2m0ihm" path="res://sprites/background/parallax-background-2.png" id="3_o843f"]
+[ext_resource type="Texture2D" uid="uid://dd12e5cyqgcu0" path="res://sprites/background/parallax-background-3.png" id="4_iynvt"]
 [ext_resource type="PackedScene" uid="uid://drmweilwoh8b" path="res://scenes/player_character.tscn" id="4_kdho6"]
+[ext_resource type="Texture2D" uid="uid://caj1uhybcsuj4" path="res://sprites/background/parallax-background-4.png" id="5_f4khq"]
 [ext_resource type="Texture2D" uid="uid://u0rb5na8qj3o" path="res://sprites/bingus.png" id="5_ldqo0"]
 [ext_resource type="PackedScene" uid="uid://dc67f04gjeuwm" path="res://prefabs/enemies/goblin.tscn" id="6_ykqk3"]
+[ext_resource type="PackedScene" uid="uid://cmi7lt1s1otja" path="res://prefabs/enemies/crow.tscn" id="7_5nk75"]
+[ext_resource type="Script" path="res://scripts/killbox-behavior.gd" id="9_4ggm1"]
+[ext_resource type="PackedScene" uid="uid://du735ucw8nxuu" path="res://prefabs/player-camera.tscn" id="9_54e7v"]
+[ext_resource type="Texture2D" uid="uid://ch43sk7pbgel6" path="res://sprites/background/parallax-background-5.png" id="16_py3oh"]
+[ext_resource type="Texture2D" uid="uid://dja5vswfdbnok" path="res://sprites/background/parallax-background-6.png" id="17_qddw6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4p6s"]
 size = Vector2(85, 116.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phs2b"]
+size = Vector2(1920, 128)
+
 [node name="Prototype" type="Node2D"]
-script = ExtResource("1_305hg")
+
+[node name="EnemySpawner" parent="." instance=ExtResource("2_omuud")]
 
 [node name="Player" parent="." instance=ExtResource("4_kdho6")]
-position = Vector2(56, 925)
+position = Vector2(168, 847)
 
 [node name="Flying-eye-ball" parent="." instance=ExtResource("2_e3m8l")]
+visible = false
 position = Vector2(2316, 734)
 
 [node name="ForestSpirt" parent="." instance=ExtResource("3_cp21h")]
+visible = false
 position = Vector2(1796, 399)
 
 [node name="Bingus" type="StaticBody2D" parent="."]
-visible = false
-position = Vector2(275, 676)
+position = Vector2(287, 1292)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bingus"]
@@ -37,3 +53,71 @@ texture = ExtResource("5_ldqo0")
 [node name="goblin" parent="." instance=ExtResource("6_ykqk3")]
 visible = false
 position = Vector2(1691, 924)
+
+[node name="Crow" parent="." instance=ExtResource("7_5nk75")]
+visible = false
+position = Vector2(1907, 498)
+
+[node name="Killbox" type="Area2D" parent="."]
+script = ExtResource("9_4ggm1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killbox"]
+position = Vector2(960, 1144)
+shape = SubResource("RectangleShape2D_phs2b")
+
+[node name="PlayerCamera" parent="." instance=ExtResource("9_54e7v")]
+
+[node name="GroundManager" type="Node2D" parent="."]
+script = ExtResource("1_305hg")
+
+[node name="ScrollingBackground" type="Node2D" parent="."]
+script = ExtResource("2_fuhit")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="ScrollingBackground"]
+scroll_ignore_camera_zoom = true
+
+[node name="Base Background" type="Sprite2D" parent="ScrollingBackground/ParallaxBackground"]
+texture = ExtResource("2_ouylb")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ScrollingBackground/ParallaxBackground"]
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(3840, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ScrollingBackground/ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("3_o843f")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ScrollingBackground/ParallaxBackground"]
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(3840, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ScrollingBackground/ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("4_iynvt")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ScrollingBackground/ParallaxBackground"]
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(3840, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ScrollingBackground/ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("5_f4khq")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ScrollingBackground/ParallaxBackground"]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(3840, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ScrollingBackground/ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("16_py3oh")
+centered = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ScrollingBackground/ParallaxBackground"]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(3840, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ScrollingBackground/ParallaxBackground/ParallaxLayer5"]
+texture = ExtResource("17_qddw6")
+centered = false
+
+[connection signal="body_entered" from="Killbox" to="Killbox" method="_on_Killbox_body_entered"]

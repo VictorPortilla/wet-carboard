@@ -6,14 +6,9 @@ extends StaticBody2D
 @export var yPositions: Array = []
 
 var direction: Vector2
-var start_position
+var start_position: Vector2
 var time_passed: float = 0
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	direction.x = -1
-	direction.y = 0
-	start_position = position
+var isActive: bool = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,11 +18,26 @@ func _process(delta):
 	position.y = start_position.y + amplitude * sin(frequency * position.x * 0.01)
 	
 	if position.x < 0:
-		queue_free()
+		_set_initial_position()
+		set_process(false)
 	
-
 func _set_spawn_position(newPos:Vector2):
 	position.y = newPos.y
 	position.x = newPos.x + 50
+	direction.x = -1
+	direction.y = 0
+	start_position = position
+	isActive = true
+	show()
+
+func _set_initial_position():
+	position.x = 3000
+	position.y = 3000
+	isActive = false
+	hide()
+
+func _kill_enemy():
+	$"Health-system-enemies"._die()
+	_set_initial_position()
 
 	
