@@ -31,5 +31,3 @@ func _unlock_ability():
 	elif comboCount == abilitFourMark and !abilityFourIsUnlocked:
 		print("Unlocking new ability 4")
 		abilityFourIsUnlocked = true
-	else :
-		print("Keep playing: " + str(comboCount))

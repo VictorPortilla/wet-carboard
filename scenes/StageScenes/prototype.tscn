@@ -29,7 +29,7 @@ size = Vector2(1920, 128)
 [node name="EnemySpawner" parent="." instance=ExtResource("2_omuud")]
 
 [node name="Player" parent="." instance=ExtResource("4_kdho6")]
-position = Vector2(141, 925)
+position = Vector2(168, 847)
 
 [node name="Flying-eye-ball" parent="." instance=ExtResource("2_e3m8l")]
 visible = false
