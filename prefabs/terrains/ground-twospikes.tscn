@@ -23,6 +23,7 @@ centered = false
 [node name="GroundCollider" type="CollisionShape2D" parent="."]
 position = Vector2(1920, 1040)
 shape = SubResource("RectangleShape2D_r1kob")
+one_way_collision = true
 
 [node name="SpikeSprite1" type="Sprite2D" parent="."]
 position = Vector2(1760, 896)

@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://4jgabfgu0476" path="res://sprites/Knight_player_Test/Jump_KG_1.png" id="5_0y8gb"]
 [ext_resource type="PackedScene" uid="uid://d2yrs814dpxd5" path="res://scenes/combo-progession.tscn" id="5_lbc0w"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5ns3"]
-size = Vector2(43, 72)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u5k4n"]
+height = 66.3939
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_foo3c"]
 atlas = ExtResource("2_tu865")
@@ -192,8 +192,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjih4"]
 size = Vector2(68.0715, 33.8572)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p8agu"]
-radius = 32.1227
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0o2sy"]
+radius = 24.2424
+height = 111.515
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 scale = Vector2(3.3, 3.3)
@@ -201,8 +202,7 @@ collision_mask = 4
 script = ExtResource("1_4n4qd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
-shape = SubResource("RectangleShape2D_w5ns3")
+shape = SubResource("CapsuleShape2D_u5k4n")
 debug_color = Color(0, 0.6, 0.701961, 0.321569)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -218,7 +218,6 @@ attack_hitbox_shape = NodePath("BasicAttackHitboxShape")
 
 [node name="BasicAttackHitboxShape" type="CollisionShape2D" parent="BasicAttackHitbox"]
 position = Vector2(36.5357, -2.42857)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mjih4")
 disabled = true
 
@@ -231,8 +230,8 @@ script = ExtResource("3_odluv")
 attack_hitbox_shape = NodePath("Ability4HitboxShape")
 
 [node name="Ability4HitboxShape" type="CollisionShape2D" parent="Ability4Hitbox"]
-scale = Vector2(1, 1)
-shape = SubResource("CircleShape2D_p8agu")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0o2sy")
 disabled = true
 
 [node name="Ability4Timer" type="Timer" parent="Ability4Hitbox"]

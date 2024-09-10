@@ -34,12 +34,12 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
-			_jump(1.0)
+			_jump(1.08)
 		elif has_double_jump:
-			_jump(1.0)
+			_jump(1.08)
 			has_double_jump = false
 		elif combo_progression.abilityOneIsUnlocked and has_triple_jump:
-			_jump(0.7) 
+			_jump(0.8) 
 			has_triple_jump = false
 
 	# Get the input direction and handle the movement/deceleration.
