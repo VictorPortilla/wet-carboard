@@ -1,9 +1,7 @@
 extends Area2D
 
 @export var speed : float = 300
-@export var yPositions: Array = []
 var isScreaming : bool
-var isActive : bool
 
 func _process(delta):
 	
@@ -18,8 +16,7 @@ func _process(delta):
 		$AnimatedSprite2D.play("Scream")
 	
 	if position.x < 0:
-		_set_initial_position()
-		set_process(false)
+		queue_free()
 
 func _set_spawn_position(newPos:Vector2):
 	$AnimatedSprite2D.self_modulate.a = 0
@@ -27,15 +24,3 @@ func _set_spawn_position(newPos:Vector2):
 	isScreaming = false
 	position.y = newPos.y
 	position.x = newPos.x + 50
-	isActive = true
-	show()
-
-func _kill_enemy():
-	$"Health-system-enemies"._die()
-	_set_initial_position()
-
-func _set_initial_position():
-	position.x = 3000
-	position.y = 3000
-	isActive = false
-	hide()

@@ -16,4 +16,4 @@ func _take_damage(damage_taken):
 	_set_health(current_health - damage_taken)
 
 func _die():
-	get_parent().queue_free()
+	print("im dead")

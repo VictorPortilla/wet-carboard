@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpxgkwn5sab6m"]
+[gd_scene load_steps=9 format=3 uid="uid://dpxgkwn5sab6m"]
 
 [ext_resource type="Script" path="res://scripts/enemies/forest-spirt/forest-spirt.gd" id="1_2cgev"]
 [ext_resource type="Texture2D" uid="uid://bfwkrmqgkr5ig" path="res://sprites/enemies/forest-spirt/test-sprites/ghost-Sheet.png" id="1_n181q"]
-[ext_resource type="PackedScene" uid="uid://c17jw6vmbeita" path="res://prefabs/Health-system-enemies.tscn" id="3_40frl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m4yir"]
 atlas = ExtResource("1_n181q")
@@ -47,7 +46,7 @@ radius = 12.0
 scale = Vector2(3, 3)
 collision_layer = 2
 script = ExtResource("1_2cgev")
-yPositions = [Vector2(1920, 213), Vector2(1920, 479), Vector2(1920, 745)]
+yPositions = [100, 150, 200]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -58,5 +57,3 @@ frame_progress = 0.376587
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_wdwuy")
-
-[node name="Health-system-enemies" parent="." instance=ExtResource("3_40frl")]

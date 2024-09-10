@@ -5,9 +5,6 @@ const JUMP_VELOCITY = -1000.0
 var has_jumped: bool = false
 @onready var jump_timer = $JumpTimer
 @onready var ray_cast_2d = $RayCast2D
-@export var yPositions: Array = []
-
-var isActive : bool = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 1400
@@ -23,7 +20,7 @@ func _physics_process(delta):
 	if !has_jumped and position.x <= 500  and is_on_floor():
 		has_jumped = true
 		jump_timer.start()
-		# print("Preparing to jump!")
+		print("Preparing to jump!")
 		SPEED = 0.0
 		# .play("jump_anticipation") or jump idk
 		# velocity.y = JUMP_VELOCITY
@@ -32,30 +29,8 @@ func _physics_process(delta):
 	# velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-	
-	if position.x < -5:
-		_set_initial_position()
-		set_process(false)
 
 func _on_jump_timer_timeout():
 	print("Jump!")
 	velocity.y = JUMP_VELOCITY
 	SPEED = 400.0
-
-
-func _kill_enemy():
-	$"Health-system-enemies"._die()
-	_set_initial_position()
-
-func _set_spawn_position(newPos:Vector2):
-	position.y = newPos.y + 10 
-	position.x = newPos.x + 50
-	isActive = true
-	show()
-
-func _set_initial_position():
-	position.x = 3000
-	position.y = 3000
-	isActive = false
-	hide()
-
