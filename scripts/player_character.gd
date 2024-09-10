@@ -69,6 +69,7 @@ func _physics_process(delta):
 	
 func _damagePlayer():
 	$"Health-sytem"._take_damage(20)
+	combo_progression._reset_combo()
 	PlayerCamera._shake(0.2, 5)
 	
 func _jump(multiplier : float):
