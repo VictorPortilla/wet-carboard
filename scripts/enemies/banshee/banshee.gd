@@ -1,4 +1,4 @@
-extends Area2D
+extends StaticBody2D
 
 @export var speed : float = 300
 @export var yPositions: Array = []
