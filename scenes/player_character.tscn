@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://drmweilwoh8b"]
+[gd_scene load_steps=40 format=3 uid="uid://drmweilwoh8b"]
 
 [ext_resource type="Script" path="res://scripts/player_character.gd" id="1_4n4qd"]
 [ext_resource type="Texture2D" uid="uid://bdviqm5g15mf6" path="res://sprites/Knight_player_Test/Attack_KG_4.png" id="2_tu865"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bc3a3kmynuapt" path="res://prefabs/health-system.tscn" id="4_1y5kj"]
 [ext_resource type="Texture2D" uid="uid://d1rbu2u2881ff" path="res://sprites/Knight_player_Test/Walking_KG_2.png" id="4_skotm"]
 [ext_resource type="Texture2D" uid="uid://4jgabfgu0476" path="res://sprites/Knight_player_Test/Jump_KG_1.png" id="5_0y8gb"]
+[ext_resource type="Texture2D" uid="uid://bbd2kqqs8oun7" path="res://sprites/Knight_player_Test/Hurt_KG_2.png" id="5_cslr5"]
 [ext_resource type="PackedScene" uid="uid://d2yrs814dpxd5" path="res://scenes/combo-progession.tscn" id="5_lbc0w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u5k4n"]
@@ -96,6 +97,22 @@ region = Rect2(500, 0, 100, 64)
 atlas = ExtResource("4_skotm")
 region = Rect2(600, 0, 100, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rngdw"]
+atlas = ExtResource("5_cslr5")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j20hh"]
+atlas = ExtResource("5_cslr5")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcxua"]
+atlas = ExtResource("5_cslr5")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6po4"]
+atlas = ExtResource("5_cslr5")
+region = Rect2(300, 0, 100, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfdbt"]
 atlas = ExtResource("5_0y8gb")
 region = Rect2(500, 0, 100, 64)
@@ -182,6 +199,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_rngdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j20hh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcxua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6po4")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pfdbt")
 }],
 "loop": true,
@@ -208,8 +242,10 @@ debug_color = Color(0, 0.6, 0.701961, 0.321569)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_xrcyo")
-animation = &"ability4"
+animation = &"hurt"
 autoplay = "default"
+frame = 3
+frame_progress = 1.0
 
 [node name="BasicAttackHitbox" type="Area2D" parent="." node_paths=PackedStringArray("attack_hitbox_shape")]
 collision_mask = 2

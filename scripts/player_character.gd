@@ -70,6 +70,7 @@ func _damagePlayer():
 	combo_progression._reset_combo()
 	PlayerCamera._shake(0.2, 5)
 	$"../ComboCanvas".update_text(0)
+	animated_sprite_2d.play("hurt")
 	
 func _jump(multiplier : float):
 	velocity.y = JUMP_VELOCITY * multiplier
