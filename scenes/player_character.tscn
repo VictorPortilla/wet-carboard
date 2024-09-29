@@ -242,10 +242,8 @@ debug_color = Color(0, 0.6, 0.701961, 0.321569)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_xrcyo")
-animation = &"hurt"
+animation = &"attack"
 autoplay = "default"
-frame = 3
-frame_progress = 1.0
 
 [node name="BasicAttackHitbox" type="Area2D" parent="." node_paths=PackedStringArray("attack_hitbox_shape")]
 collision_mask = 2
@@ -274,6 +272,7 @@ disabled = true
 wait_time = 1.5
 
 [node name="Health-sytem" parent="." instance=ExtResource("4_1y5kj")]
+maxHealth = 60
 
 [node name="Combo-progession" parent="." instance=ExtResource("5_lbc0w")]
 

@@ -14,13 +14,17 @@ const JUMP_VELOCITY = -2600.0
 
 @onready var PlayerCamera = get_parent().get_node("PlayerCamera")
 
+@onready var player_health = $"Health-sytem"
+
+@onready var player_health_UI = get_parent().get_node("Player-health")
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 12000
 var has_double_jump = false
 var has_triple_jump = false
 
 func _ready():
-	$"Health-sytem"._fully_heal()
+	player_health._fully_heal()
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -66,7 +70,8 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _damagePlayer():
-	$"Health-sytem"._take_damage(20)
+	player_health._take_damage(20)
+	player_health_UI._remove_health(1)
 	combo_progression._reset_combo()
 	PlayerCamera._shake(0.2, 5)
 	$"../ComboCanvas".update_text(0)
