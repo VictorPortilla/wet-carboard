@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -2600.0
+var can_move: bool
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var attack_hitbox_shape = $BasicAttackHitbox/BasicAttackHitboxShape
@@ -9,6 +10,7 @@ const JUMP_VELOCITY = -2600.0
 
 @onready var ability4_hitbox_shape = $Ability4Hitbox/Ability4HitboxShape
 @onready var ability4_timer = $Ability4Hitbox/Ability4Timer
+var can_use_ability_4: bool
 
 @onready var combo_progression = $"Combo-progession"
 
@@ -24,11 +26,15 @@ var has_double_jump = false
 var has_triple_jump = false
 
 func _ready():
+	can_move = true
+	can_use_ability_4 = true
 	player_health._fully_heal()
 
 func _physics_process(delta):
+	if is_on_floor():
+		can_use_ability_4 = true
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and can_move:
 		velocity.y += gravity * delta
 		
 	if !has_double_jump and is_on_floor():
@@ -59,15 +65,20 @@ func _physics_process(delta):
 		attack_hitbox_shape.disabled = false
 		animated_sprite_2d.play("attack")
 
-	elif Input.is_action_just_pressed("ability4") and not is_on_floor() and combo_progression.abilityTwoIsUnlocked:
-		ability4_timer.start()
+	elif Input.is_action_just_pressed("ability4") and not is_on_floor() and can_use_ability_4 and combo_progression.abilityTwoIsUnlocked:
+		can_move = false
+		can_use_ability_4 = false
 		ability4_hitbox_shape.disabled = false
 		animated_sprite_2d.play("ability4")
+		ability4_timer.start()
 
 	elif !animated_sprite_2d.is_playing():
 		animated_sprite_2d.play("default")
 
-	move_and_slide()
+	if can_move:
+		move_and_slide()
+
+
 	
 func _damagePlayer():
 	player_health._take_damage(20)
