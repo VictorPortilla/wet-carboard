@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqdlds6bt0oku"]
+[gd_scene load_steps=14 format=3 uid="uid://dqdlds6bt0oku"]
 
 [ext_resource type="Script" path="res://scripts/enemies/banshee/banshee.gd" id="1_6gbcl"]
 [ext_resource type="Texture2D" uid="uid://okfq0wjfnqnd" path="res://sprites/enemies/banshee/test-animations/PC Computer - Ragnarok Online - Banshee.png" id="2_uf74u"]
-[ext_resource type="PackedScene" uid="uid://c17jw6vmbeita" path="res://prefabs/Health-system-enemies.tscn" id="3_3e53j"]
+[ext_resource type="PackedScene" uid="uid://b0urxyjlf4axj" path="res://prefabs/EnemyHitbox.tscn" id="3_2dgcp"]
+[ext_resource type="PackedScene" path="res://prefabs/Health-system-enemies.tscn" id="3_3e53j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ya5b1"]
 atlas = ExtResource("2_uf74u")
@@ -83,6 +84,12 @@ animation = &"Scream"
 autoplay = "Fly"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 3)
+shape = SubResource("CapsuleShape2D_avb2f")
+
+[node name="EnemyHitbox" parent="." instance=ExtResource("3_2dgcp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
 position = Vector2(-6, 3)
 shape = SubResource("CapsuleShape2D_avb2f")
 

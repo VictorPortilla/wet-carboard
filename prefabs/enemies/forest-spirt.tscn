@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpxgkwn5sab6m"]
+[gd_scene load_steps=11 format=3 uid="uid://dpxgkwn5sab6m"]
 
 [ext_resource type="Script" path="res://scripts/enemies/forest-spirt/forest-spirt.gd" id="1_2cgev"]
 [ext_resource type="Texture2D" uid="uid://bfwkrmqgkr5ig" path="res://sprites/enemies/forest-spirt/test-sprites/ghost-Sheet.png" id="1_n181q"]
-[ext_resource type="PackedScene" uid="uid://c17jw6vmbeita" path="res://prefabs/Health-system-enemies.tscn" id="3_40frl"]
+[ext_resource type="PackedScene" uid="uid://b0urxyjlf4axj" path="res://prefabs/EnemyHitbox.tscn" id="3_6j21u"]
+[ext_resource type="PackedScene" path="res://prefabs/Health-system-enemies.tscn" id="3_40frl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m4yir"]
 atlas = ExtResource("1_n181q")
@@ -57,6 +58,11 @@ autoplay = "Movement"
 frame_progress = 0.376587
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_wdwuy")
+
+[node name="EnemyHitbox" parent="." instance=ExtResource("3_6j21u")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
 shape = SubResource("CapsuleShape2D_wdwuy")
 
 [node name="Health-system-enemies" parent="." instance=ExtResource("3_40frl")]

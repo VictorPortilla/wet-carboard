@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdu06biosyj0e"]
+
+[ext_resource type="PackedScene" uid="uid://b0urxyjlf4axj" path="res://prefabs/EnemyHitbox.tscn" id="1_d8n43"]
+[ext_resource type="Texture2D" uid="uid://d1oquxt0bqrvo" path="res://sprites/TheDummyAnim.png" id="2_jwjuo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_veaxu"]
+radius = 42.0
+height = 182.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cogcf"]
+atlas = ExtResource("2_jwjuo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krbju"]
+atlas = ExtResource("2_jwjuo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pph1u"]
+atlas = ExtResource("2_jwjuo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r3ot"]
+atlas = ExtResource("2_jwjuo")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4bf03"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cogcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krbju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pph1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r3ot")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Dummy" instance=ExtResource("1_d8n43")]
+collision_layer = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+position = Vector2(7, -91)
+shape = SubResource("CapsuleShape2D_veaxu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+texture_filter = 1
+position = Vector2(4, -123)
+scale = Vector2(3.85938, 3.85938)
+sprite_frames = SubResource("SpriteFrames_4bf03")
+autoplay = "default"
+frame_progress = 0.182656
+flip_h = true

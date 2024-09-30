@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dc67f04gjeuwm"]
+[gd_scene load_steps=13 format=3 uid="uid://dc67f04gjeuwm"]
 
 [ext_resource type="Script" path="res://scripts/enemies/goblin/goblin.gd" id="1_8jp0n"]
 [ext_resource type="Texture2D" uid="uid://bg4sp3wuiw3oi" path="res://sprites/enemies/goblin/test-sprites/gobu walk.png" id="1_oafoo"]
-[ext_resource type="PackedScene" uid="uid://c17jw6vmbeita" path="res://prefabs/Health-system-enemies.tscn" id="3_gnbm1"]
+[ext_resource type="PackedScene" uid="uid://b0urxyjlf4axj" path="res://prefabs/EnemyHitbox.tscn" id="2_ac2b8"]
+[ext_resource type="PackedScene" path="res://prefabs/Health-system-enemies.tscn" id="3_gnbm1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cdg37"]
 size = Vector2(168, 153)
@@ -64,6 +65,12 @@ script = ExtResource("1_8jp0n")
 yPositions = [Vector2(1920, 745)]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -76.5)
+shape = SubResource("RectangleShape2D_cdg37")
+
+[node name="EnemyHitbox" parent="." instance=ExtResource("2_ac2b8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
 position = Vector2(-1, -76.5)
 shape = SubResource("RectangleShape2D_cdg37")
 

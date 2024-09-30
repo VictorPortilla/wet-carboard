@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bdviqm5g15mf6" path="res://sprites/Knight_player_Test/Attack_KG_4.png" id="2_tu865"]
 [ext_resource type="Texture2D" uid="uid://yii3vjylvs3l" path="res://sprites/Knight_player_Test/Attack_KG_3.png" id="3_nh8kb"]
 [ext_resource type="Script" path="res://scripts/player_hitbox.gd" id="3_odluv"]
-[ext_resource type="PackedScene" uid="uid://bc3a3kmynuapt" path="res://prefabs/health-system.tscn" id="4_1y5kj"]
+[ext_resource type="PackedScene" uid="uid://bo8tyqn384wi" path="res://prefabs/health-system.tscn" id="4_1y5kj"]
 [ext_resource type="Texture2D" uid="uid://d1rbu2u2881ff" path="res://sprites/Knight_player_Test/Walking_KG_2.png" id="4_skotm"]
 [ext_resource type="Texture2D" uid="uid://4jgabfgu0476" path="res://sprites/Knight_player_Test/Jump_KG_1.png" id="5_0y8gb"]
 [ext_resource type="Texture2D" uid="uid://bbd2kqqs8oun7" path="res://sprites/Knight_player_Test/Hurt_KG_2.png" id="5_cslr5"]
@@ -252,7 +252,7 @@ scale = Vector2(3.3, 3.3)
 collision_mask = 4
 script = ExtResource("1_4n4qd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="MainHurtbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_u5k4n")
 debug_color = Color(0, 0.6, 0.701961, 0.321569)
 
@@ -315,9 +315,12 @@ maxHealth = 60
 
 [node name="Combo-progession" parent="." instance=ExtResource("5_lbc0w")]
 
+[connection signal="area_entered" from="BasicAttackHitbox" to="BasicAttackHitbox" method="_on_area_entered"]
 [connection signal="body_entered" from="BasicAttackHitbox" to="BasicAttackHitbox" method="_on_body_entered"]
 [connection signal="timeout" from="BasicAttackHitbox/BasicAttackTimer" to="BasicAttackHitbox" method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="Ability2Hitbox" to="Ability2Hitbox" method="_on_area_entered"]
 [connection signal="body_entered" from="Ability2Hitbox" to="Ability2Hitbox" method="_on_body_entered"]
 [connection signal="timeout" from="Ability2Hitbox/Ability2Timer" to="Ability2Hitbox" method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="Ability4Hitbox" to="Ability4Hitbox" method="_on_area_entered"]
 [connection signal="body_entered" from="Ability4Hitbox" to="Ability4Hitbox" method="_on_body_entered"]
 [connection signal="timeout" from="Ability4Hitbox/Ability4Timer" to="Ability4Hitbox" method="_on_attack_timer_timeout"]

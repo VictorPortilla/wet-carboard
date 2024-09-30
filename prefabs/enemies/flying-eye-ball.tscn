@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6ya5japrbjdp"]
+[gd_scene load_steps=9 format=3 uid="uid://b6ya5japrbjdp"]
 
 [ext_resource type="Texture2D" uid="uid://cd0ip0qdlftut" path="res://sprites/enemies/flying-eye-ball/test-sprites/Eye Monster Sprite Sheet.png" id="1_5b7mp"]
 [ext_resource type="Script" path="res://scripts/enemies/flying-eye-ball/flying-eye-ball.gd" id="1_m8sw4"]
-[ext_resource type="PackedScene" uid="uid://c17jw6vmbeita" path="res://prefabs/Health-system-enemies.tscn" id="3_d7oxo"]
+[ext_resource type="PackedScene" uid="uid://b0urxyjlf4axj" path="res://prefabs/EnemyHitbox.tscn" id="3_buvxy"]
+[ext_resource type="PackedScene" path="res://prefabs/Health-system-enemies.tscn" id="3_d7oxo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35i2s"]
 atlas = ExtResource("1_5b7mp")
@@ -43,6 +44,13 @@ sprite_frames = SubResource("SpriteFrames_gg67y")
 frame_progress = 0.78128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(50, 50)
+shape = SubResource("CircleShape2D_ipxbf")
+
+[node name="EnemyHitbox" parent="." instance=ExtResource("3_buvxy")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
 position = Vector2(-1, -1)
 scale = Vector2(50, 50)
 shape = SubResource("CircleShape2D_ipxbf")

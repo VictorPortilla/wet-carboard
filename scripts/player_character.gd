@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var GOD_MODE = false
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -2600.0
 var can_move: bool
@@ -32,6 +34,9 @@ func _ready():
 	can_move = true
 	can_use_ability_4 = true
 	player_health._fully_heal()
+	
+	if GOD_MODE:
+		combo_progression._unlock_all_abilities()
 
 func _physics_process(delta):
 	if is_on_floor():
@@ -84,8 +89,10 @@ func _physics_process(delta):
 	elif !animated_sprite_2d.is_playing():
 		animated_sprite_2d.play("default")
 
-	if can_move:
-		move_and_slide()
+	if !can_move:
+		velocity.y = 0
+		 
+	move_and_slide()
 
 func _damagePlayer():
 	player_health._take_damage(20)

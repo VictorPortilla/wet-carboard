@@ -3,7 +3,7 @@ extends StaticBody2D
 var SPEED = 200.0
 @onready var attack_timer = $AttackTimer
 @onready var hurtbox = $HurtboxCollisionShape
-@onready var hitbox = $Hitbox/HitboxShape2D
+@onready var hitbox = $EnemyHitbox/HitboxShape2D
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D 
 
 @export var yPositions: Array = []

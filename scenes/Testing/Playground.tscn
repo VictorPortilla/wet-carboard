@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5wyqd4b3rufu"]
+
+[ext_resource type="PackedScene" uid="uid://drmweilwoh8b" path="res://scenes/player_character.tscn" id="1_4spt4"]
+[ext_resource type="PackedScene" uid="uid://dpxgkwn5sab6m" path="res://prefabs/enemies/forest-spirt.tscn" id="2_3h556"]
+[ext_resource type="PackedScene" uid="uid://cr5lmmjbesqkn" path="res://prefabs/combo_canvas.tscn" id="3_nu4aw"]
+[ext_resource type="PackedScene" uid="uid://0hwnfkkh67gp" path="res://scenes/player-health.tscn" id="4_euwqv"]
+[ext_resource type="PackedScene" path="res://prefabs/player-camera.tscn" id="5_4jnk3"]
+[ext_resource type="PackedScene" uid="uid://cdu06biosyj0e" path="res://prefabs/enemies/dummy.tscn" id="6_ioknk"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3amv7"]
+
+[node name="Playground" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_4spt4")]
+position = Vector2(462, 825)
+GOD_MODE = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(470, 1022)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_3amv7")
+
+[node name="ForestSpirt" parent="." instance=ExtResource("2_3h556")]
+position = Vector2(1640, 864)
+
+[node name="ForestSpirt2" parent="." instance=ExtResource("2_3h556")]
+position = Vector2(3275, 827)
+
+[node name="ComboCanvas" parent="." instance=ExtResource("3_nu4aw")]
+
+[node name="Player-health" parent="." instance=ExtResource("4_euwqv")]
+curretHearth = 3
+maxHearths = 3
+
+[node name="PlayerCamera" parent="." instance=ExtResource("5_4jnk3")]
+
+[node name="Dummy" parent="." instance=ExtResource("6_ioknk")]
+position = Vector2(605, 1316)

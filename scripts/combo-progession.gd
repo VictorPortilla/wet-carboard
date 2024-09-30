@@ -10,7 +10,6 @@ var abilityThreeIsUnlocked: bool = false
 @export var abilitFourMark: int = 40
 var abilityFourIsUnlocked: bool = false
 
-
 func _add_to_combo():
 	comboCount += 1
 	_unlock_ability()
@@ -20,6 +19,12 @@ func _reset_combo():
 
 func _get_current_combo():
 	return comboCount
+	
+func _unlock_all_abilities():
+	abilityOneIsUnlocked = true
+	abilityTwoIsUnlocked = true
+	abilityThreeIsUnlocked = true
+	abilityFourIsUnlocked = true
 
 func _unlock_ability():
 	if comboCount == abilityOneMark and !abilityOneIsUnlocked:
