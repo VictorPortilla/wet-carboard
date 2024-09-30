@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ccwmpycb7ma7b"]
+[gd_scene load_steps=22 format=3 uid="uid://ccwmpycb7ma7b"]
 
 [ext_resource type="Script" path="res://scripts/ground-controller.gd" id="1_305hg"]
 [ext_resource type="PackedScene" uid="uid://b6ya5japrbjdp" path="res://prefabs/enemies/flying-eye-ball.tscn" id="2_e3m8l"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://du735ucw8nxuu" path="res://prefabs/player-camera.tscn" id="9_54e7v"]
 [ext_resource type="Texture2D" uid="uid://ch43sk7pbgel6" path="res://sprites/background/parallax-background-5.png" id="16_py3oh"]
 [ext_resource type="Texture2D" uid="uid://dja5vswfdbnok" path="res://sprites/background/parallax-background-6.png" id="17_qddw6"]
+[ext_resource type="PackedScene" uid="uid://cr5lmmjbesqkn" path="res://prefabs/combo_canvas.tscn" id="18_bwaau"]
+[ext_resource type="PackedScene" uid="uid://0hwnfkkh67gp" path="res://scenes/player-health.tscn" id="19_57pg4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4p6s"]
 size = Vector2(85, 116.5)
@@ -119,5 +121,9 @@ motion_mirroring = Vector2(3840, 2.08165e-12)
 [node name="Sprite2D" type="Sprite2D" parent="ScrollingBackground/ParallaxBackground/ParallaxLayer5"]
 texture = ExtResource("17_qddw6")
 centered = false
+
+[node name="ComboCanvas" parent="." instance=ExtResource("18_bwaau")]
+
+[node name="Player-health" parent="." instance=ExtResource("19_57pg4")]
 
 [connection signal="body_entered" from="Killbox" to="Killbox" method="_on_Killbox_body_entered"]

@@ -10,10 +10,11 @@ func _ready():
 
 func _add_health(value: int):
 	curretHearth += value
-	hearths[curretHearth].show()
 	
 	if(curretHearth > maxHearths):
 		curretHearth = maxHearths
+	
+	hearths[curretHearth].show()
 
 func _remove_health(value: int):
 	hearths[curretHearth].hide()
@@ -30,10 +31,10 @@ func _fully_heal():
 	for i in hearths.size():
 		hearths[i].show()
 	
-func _physics_process(delta):
+'''func _physics_process(delta):
 	if Input.is_action_just_pressed("healthChangeUp"):
 		_add_health(1)
 		print("currentHearth " + str(curretHearth))
 	if Input.is_action_just_pressed("healthChangeDown"):
 		_remove_health(1)
-		print("currentHearth " + str(curretHearth))
+		print("currentHearth " + str(curretHearth))'''

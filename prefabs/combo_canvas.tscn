@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr5lmmjbesqkn"]
+
+[ext_resource type="Script" path="res://scripts/managers/temp/combo_canvas.gd" id="1_bkng2"]
+
+[node name="ComboCanvas" type="CanvasLayer"]
+script = ExtResource("1_bkng2")
+
+[node name="Counter" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Combo: 0"

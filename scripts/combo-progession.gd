@@ -18,6 +18,9 @@ func _add_to_combo():
 func _reset_combo():
 	comboCount = 0
 
+func _get_current_combo():
+	return comboCount
+
 func _unlock_ability():
 	if comboCount == abilityOneMark and !abilityOneIsUnlocked:
 		print("Unlocking new ability 1")

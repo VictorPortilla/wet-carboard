@@ -2,17 +2,26 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -2600.0
+var can_move: bool
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var attack_hitbox_shape = $BasicAttackHitbox/BasicAttackHitboxShape
 @onready var attack_timer = $BasicAttackHitbox/BasicAttackTimer
 
+@onready var ability2_hitbox_shape = $Ability2Hitbox/Ability2HitboxShape
+@onready var ability2_timer = $Ability2Hitbox/Ability2Timer
+
 @onready var ability4_hitbox_shape = $Ability4Hitbox/Ability4HitboxShape
 @onready var ability4_timer = $Ability4Hitbox/Ability4Timer
+var can_use_ability_4: bool
 
 @onready var combo_progression = $"Combo-progession"
 
 @onready var PlayerCamera = get_parent().get_node("PlayerCamera")
+
+@onready var player_health = $"Health-sytem"
+
+@onready var player_health_UI = get_parent().get_node("Player-health")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 12000
@@ -20,11 +29,15 @@ var has_double_jump = false
 var has_triple_jump = false
 
 func _ready():
-	$"Health-sytem"._fully_heal()
+	can_move = true
+	can_use_ability_4 = true
+	player_health._fully_heal()
 
 func _physics_process(delta):
+	if is_on_floor():
+		can_use_ability_4 = true
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and can_move:
 		velocity.y += gravity * delta
 		
 	if !has_double_jump and is_on_floor():
@@ -54,21 +67,33 @@ func _physics_process(delta):
 		attack_timer.start()
 		attack_hitbox_shape.disabled = false
 		animated_sprite_2d.play("attack")
-
-	elif Input.is_action_just_pressed("ability4") and not is_on_floor() and combo_progression.abilityTwoIsUnlocked:
-		ability4_timer.start()
+	
+	elif Input.is_action_just_pressed("downAttack") and not is_on_floor() and combo_progression.abilityThreeIsUnlocked:
+		ability2_hitbox_shape.disabled = false
+		animated_sprite_2d.play("ability2")
+		ability2_timer.start()
+		
+	
+	elif Input.is_action_just_pressed("ability4") and not is_on_floor() and can_use_ability_4 and combo_progression.abilityFourIsUnlocked:
+		can_move = false
+		can_use_ability_4 = false
 		ability4_hitbox_shape.disabled = false
 		animated_sprite_2d.play("ability4")
+		ability4_timer.start()
 
 	elif !animated_sprite_2d.is_playing():
 		animated_sprite_2d.play("default")
 
-	move_and_slide()
-	
+	if can_move:
+		move_and_slide()
+
 func _damagePlayer():
-	$"Health-sytem"._take_damage(20)
+	player_health._take_damage(20)
+	player_health_UI._remove_health(1)
 	combo_progression._reset_combo()
 	PlayerCamera._shake(0.2, 5)
+	$"../ComboCanvas".update_text(0)
+	animated_sprite_2d.play("hurt")
 	
 func _jump(multiplier : float):
 	velocity.y = JUMP_VELOCITY * multiplier
