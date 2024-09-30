@@ -8,6 +8,9 @@ var can_move: bool
 @onready var attack_hitbox_shape = $BasicAttackHitbox/BasicAttackHitboxShape
 @onready var attack_timer = $BasicAttackHitbox/BasicAttackTimer
 
+@onready var ability2_hitbox_shape = $Ability2Hitbox/Ability2HitboxShape
+@onready var ability2_timer = $Ability2Hitbox/Ability2Timer
+
 @onready var ability4_hitbox_shape = $Ability4Hitbox/Ability4HitboxShape
 @onready var ability4_timer = $Ability4Hitbox/Ability4Timer
 var can_use_ability_4: bool
@@ -64,8 +67,14 @@ func _physics_process(delta):
 		attack_timer.start()
 		attack_hitbox_shape.disabled = false
 		animated_sprite_2d.play("attack")
-
-	elif Input.is_action_just_pressed("ability4") and not is_on_floor() and can_use_ability_4 and combo_progression.abilityTwoIsUnlocked:
+	
+	elif Input.is_action_just_pressed("downAttack") and not is_on_floor() and combo_progression.abilityThreeIsUnlocked:
+		ability2_hitbox_shape.disabled = false
+		animated_sprite_2d.play("ability2")
+		ability2_timer.start()
+		
+	
+	elif Input.is_action_just_pressed("ability4") and not is_on_floor() and can_use_ability_4 and combo_progression.abilityFourIsUnlocked:
 		can_move = false
 		can_use_ability_4 = false
 		ability4_hitbox_shape.disabled = false
@@ -78,8 +87,6 @@ func _physics_process(delta):
 	if can_move:
 		move_and_slide()
 
-
-	
 func _damagePlayer():
 	player_health._take_damage(20)
 	player_health_UI._remove_health(1)

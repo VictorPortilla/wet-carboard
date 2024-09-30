@@ -1,6 +1,7 @@
-[gd_scene load_steps=40 format=3 uid="uid://drmweilwoh8b"]
+[gd_scene load_steps=43 format=3 uid="uid://drmweilwoh8b"]
 
 [ext_resource type="Script" path="res://scripts/player_character.gd" id="1_4n4qd"]
+[ext_resource type="Texture2D" uid="uid://cfjg55vg16so4" path="res://sprites/Knight_player_Test/Landing_KG_2.png" id="2_kx1kd"]
 [ext_resource type="Texture2D" uid="uid://bdviqm5g15mf6" path="res://sprites/Knight_player_Test/Attack_KG_4.png" id="2_tu865"]
 [ext_resource type="Texture2D" uid="uid://yii3vjylvs3l" path="res://sprites/Knight_player_Test/Attack_KG_3.png" id="3_nh8kb"]
 [ext_resource type="Script" path="res://scripts/player_hitbox.gd" id="3_odluv"]
@@ -12,6 +13,10 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u5k4n"]
 height = 66.3939
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cqs1"]
+atlas = ExtResource("2_kx1kd")
+region = Rect2(300, 0, 100, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_foo3c"]
 atlas = ExtResource("2_tu865")
@@ -121,6 +126,14 @@ region = Rect2(500, 0, 100, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_1cqs1")
+}],
+"loop": false,
+"name": &"ability2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_foo3c")
 }, {
 "duration": 1.0,
@@ -226,6 +239,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjih4"]
 size = Vector2(68.0715, 33.8572)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6w7sq"]
+radius = 14.5498
+height = 69.435
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0o2sy"]
 radius = 24.2424
 height = 111.515
@@ -242,12 +259,12 @@ debug_color = Color(0, 0.6, 0.701961, 0.321569)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_xrcyo")
-animation = &"attack"
 autoplay = "default"
 
 [node name="BasicAttackHitbox" type="Area2D" parent="." node_paths=PackedStringArray("attack_hitbox_shape", "charcater")]
 collision_mask = 2
 script = ExtResource("3_odluv")
+abilityName = "BasicAttack"
 attack_hitbox_shape = NodePath("BasicAttackHitboxShape")
 charcater = NodePath("..")
 
@@ -260,9 +277,28 @@ disabled = true
 wait_time = 0.36
 one_shot = true
 
+[node name="Ability2Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("attack_hitbox_shape", "charcater")]
+position = Vector2(-35.4545, 30.6061)
+collision_mask = 2
+script = ExtResource("3_odluv")
+abilityName = "SkullCrusher"
+attack_hitbox_shape = NodePath("Ability2HitboxShape")
+charcater = NodePath("..")
+
+[node name="Ability2HitboxShape" type="CollisionShape2D" parent="Ability2Hitbox"]
+position = Vector2(36.5357, -2.42857)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6w7sq")
+disabled = true
+
+[node name="Ability2Timer" type="Timer" parent="Ability2Hitbox"]
+wait_time = 0.3
+one_shot = true
+
 [node name="Ability4Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("attack_hitbox_shape", "charcater")]
 collision_mask = 2
 script = ExtResource("3_odluv")
+abilityName = "DragonSlayerSpin"
 attack_hitbox_shape = NodePath("Ability4HitboxShape")
 charcater = NodePath("..")
 
@@ -281,5 +317,7 @@ maxHealth = 60
 
 [connection signal="body_entered" from="BasicAttackHitbox" to="BasicAttackHitbox" method="_on_body_entered"]
 [connection signal="timeout" from="BasicAttackHitbox/BasicAttackTimer" to="BasicAttackHitbox" method="_on_attack_timer_timeout"]
+[connection signal="body_entered" from="Ability2Hitbox" to="Ability2Hitbox" method="_on_body_entered"]
+[connection signal="timeout" from="Ability2Hitbox/Ability2Timer" to="Ability2Hitbox" method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="Ability4Hitbox" to="Ability4Hitbox" method="_on_body_entered"]
 [connection signal="timeout" from="Ability4Hitbox/Ability4Timer" to="Ability4Hitbox" method="_on_attack_timer_timeout"]
