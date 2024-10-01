@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cdu06biosyj0e"]
 
-[ext_resource type="PackedScene" uid="uid://b0urxyjlf4axj" path="res://prefabs/EnemyHitbox.tscn" id="1_d8n43"]
+[ext_resource type="PackedScene" uid="uid://b0urxyjlf4axj" path="res://prefabs/enemy-hitbox.tscn" id="1_d8n43"]
 [ext_resource type="Texture2D" uid="uid://d1oquxt0bqrvo" path="res://sprites/TheDummyAnim.png" id="2_jwjuo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_veaxu"]
