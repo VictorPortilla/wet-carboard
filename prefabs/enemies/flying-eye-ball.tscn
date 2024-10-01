@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cd0ip0qdlftut" path="res://sprites/enemies/flying-eye-ball/test-sprites/Eye Monster Sprite Sheet.png" id="1_5b7mp"]
 [ext_resource type="Script" path="res://scripts/enemies/flying-eye-ball/flying-eye-ball.gd" id="1_m8sw4"]
-[ext_resource type="PackedScene" uid="uid://b0urxyjlf4axj" path="res://prefabs/EnemyHitbox.tscn" id="3_buvxy"]
-[ext_resource type="PackedScene" path="res://prefabs/Health-system-enemies.tscn" id="3_d7oxo"]
+[ext_resource type="PackedScene" uid="uid://b0urxyjlf4axj" path="res://prefabs/enemy-hitbox.tscn" id="3_buvxy"]
+[ext_resource type="PackedScene" uid="uid://c17jw6vmbeita" path="res://prefabs/health-system-enemies.tscn" id="3_d7oxo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35i2s"]
 atlas = ExtResource("1_5b7mp")

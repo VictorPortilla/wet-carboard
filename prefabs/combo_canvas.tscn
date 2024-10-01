@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cr5lmmjbesqkn"]
 
-[ext_resource type="Script" path="res://scripts/managers/temp/combo_canvas.gd" id="1_bkng2"]
+[ext_resource type="Script" path="res://scripts/managers/temp/combo-canvas.gd" id="1_bkng2"]
 
 [node name="ComboCanvas" type="CanvasLayer"]
 script = ExtResource("1_bkng2")

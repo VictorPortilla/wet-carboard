@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c17jw6vmbeita"]
 
-[ext_resource type="Script" path="res://scripts/managers/Health-system-enemies.gd" id="1_1le8o"]
+[ext_resource type="Script" path="res://scripts/managers/health-system-enemies.gd" id="1_1le8o"]
 
 [node name="Health-system-enemies" type="Node"]
 script = ExtResource("1_1le8o")

@@ -11,7 +11,7 @@ var enemyFiveArray : Array
 var enemy1 = preload("res://prefabs/enemies/forest-spirt.tscn")
 var enemy2 = preload("res://prefabs/enemies/flying-eye-ball.tscn")
 var enemy3 = preload("res://prefabs/enemies/goblin.tscn")
-var enemy4 = preload("res://prefabs/enemies/banshee_.tscn")
+var enemy4 = preload("res://prefabs/enemies/banshee.tscn")
 var enemy5 = preload("res://prefabs/enemies/crow.tscn")
 
 # Called when the node enters the scene tree for the first time.
